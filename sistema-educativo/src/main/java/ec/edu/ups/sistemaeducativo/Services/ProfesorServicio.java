@@ -14,7 +14,8 @@ import ec.edu.ups.sistemaeducativo.Repositories.ProfesorRepositorio;
 
 @Service
 public class ProfesorServicio {
-    private final ProfesorRepositorio profesorRepositorio;
+   
+	private final ProfesorRepositorio profesorRepositorio;
     HashMap<String, Object> datos;
 
     @Autowired
