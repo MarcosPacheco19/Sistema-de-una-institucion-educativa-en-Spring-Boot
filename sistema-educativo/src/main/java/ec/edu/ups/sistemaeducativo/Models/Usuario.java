@@ -1,8 +1,13 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="Usuarios")
 public class Usuario {
     
+
     private Long usuId;
     private String usuNombre;
     private String usuApellido;
@@ -83,5 +88,73 @@ public class Usuario {
 
     public void setUsuCedula(String usuCedula) {
         this.usuCedula = usuCedula;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((usuId == null) ? 0 : usuId.hashCode());
+        result = prime * result + ((usuNombre == null) ? 0 : usuNombre.hashCode());
+        result = prime * result + ((usuApellido == null) ? 0 : usuApellido.hashCode());
+        result = prime * result + ((usuCorreo == null) ? 0 : usuCorreo.hashCode());
+        result = prime * result + ((usuPassword == null) ? 0 : usuPassword.hashCode());
+        result = prime * result + ((usuPerfilAcceso == null) ? 0 : usuPerfilAcceso.hashCode());
+        result = prime * result + ((usuCedula == null) ? 0 : usuCedula.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Usuario other = (Usuario) obj;
+        if (usuId == null) {
+            if (other.usuId != null)
+                return false;
+        } else if (!usuId.equals(other.usuId))
+            return false;
+        if (usuNombre == null) {
+            if (other.usuNombre != null)
+                return false;
+        } else if (!usuNombre.equals(other.usuNombre))
+            return false;
+        if (usuApellido == null) {
+            if (other.usuApellido != null)
+                return false;
+        } else if (!usuApellido.equals(other.usuApellido))
+            return false;
+        if (usuCorreo == null) {
+            if (other.usuCorreo != null)
+                return false;
+        } else if (!usuCorreo.equals(other.usuCorreo))
+            return false;
+        if (usuPassword == null) {
+            if (other.usuPassword != null)
+                return false;
+        } else if (!usuPassword.equals(other.usuPassword))
+            return false;
+        if (usuPerfilAcceso == null) {
+            if (other.usuPerfilAcceso != null)
+                return false;
+        } else if (!usuPerfilAcceso.equals(other.usuPerfilAcceso))
+            return false;
+        if (usuCedula == null) {
+            if (other.usuCedula != null)
+                return false;
+        } else if (!usuCedula.equals(other.usuCedula))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [usuId=" + usuId + ", usuNombre=" + usuNombre + ", usuApellido=" + usuApellido + ", usuCorreo="
+                + usuCorreo + ", usuPassword=" + usuPassword + ", usuPerfilAcceso=" + usuPerfilAcceso + ", usuCedula="
+                + usuCedula + "]";
     }
 }

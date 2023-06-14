@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ec.edu.ups.sistemaeducativo.Models.Usuario;
+import ec.edu.ups.sistemaeducativo.Models.Estudiante;
 
 @Repository
-public interface EstudianteRepositorio extends JpaRepository<Usuario, Long> {
+public interface EstudianteRepositorio extends JpaRepository<Estudiante, Long> {
     
-    Optional<Usuario> findUserByCedula(String usuario);
+    Optional<Estudiante> findEstudiantebyCedula(String Cedula);
 }
