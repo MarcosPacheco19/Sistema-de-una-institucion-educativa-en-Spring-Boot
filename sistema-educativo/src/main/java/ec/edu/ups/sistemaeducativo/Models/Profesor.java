@@ -1,9 +1,15 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
@@ -17,8 +23,17 @@ public class Profesor extends Usuario {
     private Long proId;
     @Column(name="pro_especialidad")
     private String proEspecialidad;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="tit_id")
+    private List<Titulo> titulos;
+
+    @OneToOne
+    @JoinColumn(name="car_id")
+    private Carrera carrera;
     
     public Profesor() {
+
     }
 
     public Profesor(Long usuId, String usuNombre, String usuApellido, String usuCorreo, String usuPassword,
@@ -47,6 +62,22 @@ public class Profesor extends Usuario {
 
     public void setProEspecialidad(String proEspecialidad) {
         this.proEspecialidad = proEspecialidad;
+    }
+
+    public List<Titulo> getTitulos() {
+        return titulos;
+    }
+
+    public void setTitulos(List<Titulo> titulos) {
+        this.titulos = titulos;
+    }
+
+    public Carrera getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
     }
 
     @Override

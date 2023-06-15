@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -49,6 +51,10 @@ public class CabeceraFactura {
 
     @Column(name="cab_total")
     private double cabTotal;
+
+    @OneToOne
+    @JoinColumn(name="est_id")
+    private Empleado empleado;
 
     public Long getCabId(){
         return cabId;

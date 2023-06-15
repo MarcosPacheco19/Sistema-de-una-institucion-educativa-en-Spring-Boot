@@ -24,6 +24,12 @@ public class DetalleFactura {
     @Column(name="det_total")
     private double detTotal;
     
+    public long getDet_id() {
+        return detId;
+    }
+    public void setDet_id(long det_id) {
+        this.detId = det_id;
+    }
     public String getDetDescripcion() {
         return detDescripcion;
     }
