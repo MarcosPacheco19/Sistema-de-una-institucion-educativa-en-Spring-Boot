@@ -1,29 +1,29 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
-import java.sql.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table (name="Calificaciones")
 public class Calificacion {
     
-     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="cali_id")
-    private int caliId;
+    private Long caliId;
     @Column(name="cali_nota")
     private int nota;
     @Column(name="cali_comentario")
     private String comentario;
     @Column(name="cali_fecha_calificacion")
-    private Date fechaCalificacion;
+    private String fechaCalificacion;
    
    
-    public Calificacion(int caliId, int nota, String comentario, Date fechaCalificacion) {
+    public Calificacion(Long caliId, int nota, String comentario, String fechaCalificacion) {
         this.caliId = caliId;
         this.nota = nota;
         this.comentario = comentario;
@@ -31,12 +31,12 @@ public class Calificacion {
     }
 
 
-    public int getCaliId() {
+    public Long getCaliId() {
         return caliId;
     }
 
 
-    public void setCaliId(int caliId) {
+    public void setCaliId(Long caliId) {
         this.caliId = caliId;
     }
 
@@ -61,21 +61,21 @@ public class Calificacion {
     }
 
 
-    public Date getFechaCalificacion() {
+    public String getFechaCalificacion() {
         return fechaCalificacion;
     }
 
 
-    public void setFechaCalificacion(Date fechaCalificacion) {
+    public void setFechaCalificacion(String fechaCalificacion) {
         this.fechaCalificacion = fechaCalificacion;
     }
 
-
+    
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + caliId;
+        result = prime * result + ((caliId == null) ? 0 : caliId.hashCode());
         result = prime * result + nota;
         result = prime * result + ((comentario == null) ? 0 : comentario.hashCode());
         result = prime * result + ((fechaCalificacion == null) ? 0 : fechaCalificacion.hashCode());
@@ -92,7 +92,10 @@ public class Calificacion {
         if (getClass() != obj.getClass())
             return false;
         Calificacion other = (Calificacion) obj;
-        if (caliId != other.caliId)
+        if (caliId == null) {
+            if (other.caliId != null)
+                return false;
+        } else if (!caliId.equals(other.caliId))
             return false;
         if (nota != other.nota)
             return false;
@@ -109,14 +112,9 @@ public class Calificacion {
         return true;
     }
 
-
     @Override
     public String toString() {
         return "Califiacion [caliId=" + caliId + ", nota=" + nota + ", comentario=" + comentario
                 + ", fechaCalificacion=" + fechaCalificacion + "]";
     }
-
-    
-    
-
 }

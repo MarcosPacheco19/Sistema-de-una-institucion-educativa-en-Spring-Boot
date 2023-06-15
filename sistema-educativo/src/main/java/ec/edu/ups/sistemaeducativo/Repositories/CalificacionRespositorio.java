@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 import ec.edu.ups.sistemaeducativo.Models.Calificacion;
 
 @Repository
-public interface CafificacionRespositorio extends JpaRepository<Calificacion, Long>{
+public interface CalificacionRespositorio extends JpaRepository<Calificacion, Long>{
     
-    Optional<Calificacion> findCalificacion(String id_Calificacion);
-
+    Optional<Calificacion> findCalificacionById(Long idCalificacion);
 }

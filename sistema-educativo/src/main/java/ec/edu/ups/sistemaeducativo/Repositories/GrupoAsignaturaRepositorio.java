@@ -9,6 +9,5 @@ import ec.edu.ups.sistemaeducativo.Models.GrupoAsignatura;
 @Repository
 public interface GrupoAsignaturaRepositorio extends JpaRepository<GrupoAsignatura, Long>{
     
-    Optional<GrupoAsignatura> findGrupoAsignatura(String idGrpAsignatura);
+    Optional<GrupoAsignatura> findGrupoAsignaturaByGrupo(String grupoAcademino);
 }
-

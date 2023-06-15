@@ -3,9 +3,10 @@ package ec.edu.ups.sistemaeducativo.Repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ec.edu.ups.sistemaeducativo.Models.Matricula;
+import ec.edu.ups.sistemaeducativo.Models.DetalleMatricula;
 
 @Repository
-public interface MatriculaRepositorio extends JpaRepository<Matricula, Long>{
+public interface DetalleMatriculaRepositorio extends JpaRepository<DetalleMatricula, Long>{
+    
     
 }

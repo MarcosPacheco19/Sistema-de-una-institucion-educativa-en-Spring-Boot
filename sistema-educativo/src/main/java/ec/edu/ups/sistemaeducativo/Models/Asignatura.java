@@ -14,14 +14,14 @@ public class Asignatura {
     @Column(name="asig_id")
     private Long asigId;
     @Column(name="asig_nombre")
-    private String asignombre;
+    private String asigNombre;
     @Column(name="asig_creditos")
     private int asigCreditos;
 
 
-    public Asignatura(Long asigId, String asignombre, int asigCreditos) {
+    public Asignatura(Long asigId, String asigNombre, int asigCreditos) {
         this.asigId = asigId;
-        this.asignombre = asignombre;
+        this.asigNombre = asigNombre;
         this.asigCreditos = asigCreditos;
     }
 
@@ -36,13 +36,13 @@ public class Asignatura {
     }
 
 
-    public String getAsignombre() {
-        return asignombre;
+    public String getAsigNombre() {
+        return asigNombre;
     }
 
 
-    public void setAsignombre(String asignombre) {
-        this.asignombre = asignombre;
+    public void setAsigNombre(String asigNombre) {
+        this.asigNombre = asigNombre;
     }
 
 
@@ -61,7 +61,7 @@ public class Asignatura {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((asigId == null) ? 0 : asigId.hashCode());
-        result = prime * result + ((asignombre == null) ? 0 : asignombre.hashCode());
+        result = prime * result + ((asigNombre == null) ? 0 : asigNombre.hashCode());
         result = prime * result + asigCreditos;
         return result;
     }
@@ -81,10 +81,10 @@ public class Asignatura {
                 return false;
         } else if (!asigId.equals(other.asigId))
             return false;
-        if (asignombre == null) {
-            if (other.asignombre != null)
+        if (asigNombre == null) {
+            if (other.asigNombre != null)
                 return false;
-        } else if (!asignombre.equals(other.asignombre))
+        } else if (!asigNombre.equals(other.asigNombre))
             return false;
         if (asigCreditos != other.asigCreditos)
             return false;
@@ -94,6 +94,6 @@ public class Asignatura {
 
     @Override
     public String toString() {
-        return "Asignatura [asigId=" + asigId + ", asignombre=" + asignombre + ", asigCreditos=" + asigCreditos + "]";
+        return "Asignatura [asigId=" + asigId + ", asignombre=" + asigNombre + ", asigCreditos=" + asigCreditos + "]";
     }
 }
