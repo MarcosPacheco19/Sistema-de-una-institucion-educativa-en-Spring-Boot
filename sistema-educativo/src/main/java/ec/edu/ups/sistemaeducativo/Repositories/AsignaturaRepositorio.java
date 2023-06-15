@@ -1,5 +1,15 @@
 package ec.edu.ups.sistemaeducativo.Repositories;
 
-public class AsignaturaRepositorio {
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import ec.edu.ups.sistemaeducativo.Models.Asignatura;
+
+@Repository
+public interface AsignaturaRepositorio extends JpaRepository<Asignatura, Long>{
     
+    Optional<Asignatura> findAsignatura(String id_Asignatura);
+
 }

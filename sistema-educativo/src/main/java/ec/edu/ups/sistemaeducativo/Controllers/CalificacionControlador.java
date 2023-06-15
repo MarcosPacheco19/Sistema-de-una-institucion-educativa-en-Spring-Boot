@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ec.edu.ups.sistemaeducativo.Models.Califiacion;
+import ec.edu.ups.sistemaeducativo.Models.Calificacion;
 import ec.edu.ups.sistemaeducativo.Services.CalificacionServicio;
 
 public class CalificacionControlador {
