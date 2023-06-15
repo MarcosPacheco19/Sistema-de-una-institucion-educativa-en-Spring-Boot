@@ -19,7 +19,7 @@ public class Calificacion {
     private int nota;
     @Column(name="cali_comentario")
     private String comentario;
-    @Column(name="asig_fecha_calificacion")
+    @Column(name="cali_fecha_calificacion")
     private Date fechaCalificacion;
    
    

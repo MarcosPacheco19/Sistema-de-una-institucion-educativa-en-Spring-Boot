@@ -9,11 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-
-
 @Service
 public class CarreraEstudianteServicio {
-     private final CarreraEstudianteRepositorio carreraEstudianteRepositorio;
+
+    private final CarreraEstudianteRepositorio carreraEstudianteRepositorio;
     private HashMap<String, Object> datos;
 
     @Autowired
@@ -21,11 +20,11 @@ public class CarreraEstudianteServicio {
         this.carreraEstudianteRepositorio = carreraEstudianteRepositorio;
     }
 
-    public List<CarreraEstudiante> getEstudiantes() {
+    public List<CarreraEstudiante> getCarrerasEstudiantes() {
         return this.carreraEstudianteRepositorio.findAll();
     }
 
-    public ResponseEntity<Object> nuevoEstudiante(CarreraEstudiante carreraEstudiante) {
+    public ResponseEntity<Object> nuevoCarreraEstudiante(CarreraEstudiante carreraEstudiante) {
         datos = new HashMap<>();
 
         Optional<CarreraEstudiante> respuesta = carreraEstudianteRepositorio.findByCarEstId(carreraEstudiante.getCarEstId());
@@ -40,7 +39,7 @@ public class CarreraEstudianteServicio {
         return new ResponseEntity<>(datos, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Object> actualizarEstudiante(CarreraEstudiante carreraEstudiante) {
+    public ResponseEntity<Object> actualizarCarreraEstudiante(CarreraEstudiante carreraEstudiante) {
         datos = new HashMap<>();
 
         Optional<CarreraEstudiante> respuesta = carreraEstudianteRepositorio.findByCarEstId(carreraEstudiante.getCarEstId());
@@ -56,8 +55,8 @@ public class CarreraEstudianteServicio {
         return new ResponseEntity<>(datos, HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> eliminarEstudiante(String id) {
-        boolean existencia = this.carreraEstudianteRepositorio.existsByCarEstId(id);
+    public ResponseEntity<Object> eliminarCarreraEstudiante(Long id) {
+        boolean existencia = this.carreraEstudianteRepositorio.existsById(id);
         datos = new HashMap<>();
 
         if (!existencia) {
@@ -66,12 +65,12 @@ public class CarreraEstudianteServicio {
             return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
         }
 
-        carreraEstudianteRepositorio.deleteByCarEstId(id);
+        carreraEstudianteRepositorio.deleteById(id);
         datos.put("message", "Carrera Estudiante eliminado");
         return new ResponseEntity<>(datos, HttpStatus.ACCEPTED);
     }
 
-    public ResponseEntity<Object> buscarEstudiante(String id) {
+    public ResponseEntity<Object> buscarCarreraEstudiante(Long id) {
         Optional<CarreraEstudiante> carreraEstudianteOptional = carreraEstudianteRepositorio.findByCarEstId(id);
         if (carreraEstudianteOptional.isPresent()) {
             CarreraEstudiante carreraEstudiante = carreraEstudianteOptional.get();

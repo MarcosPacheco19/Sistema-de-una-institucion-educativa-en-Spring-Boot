@@ -3,17 +3,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
-
-
 import ec.edu.ups.sistemaeducativo.Models.CarreraEstudiante;
-
-
 
 @Repository
 public interface CarreraEstudianteRepositorio extends JpaRepository<CarreraEstudiante,Long> {
-    Optional<CarreraEstudiante> findByCarEstId(String carEstId);
-
-    boolean existsByCarEstId(String carEstId);
-
-    void deleteByCarEstId(String carEstId);
+    
+    Optional<CarreraEstudiante> findByCarEstId(Long carEstId);
 }

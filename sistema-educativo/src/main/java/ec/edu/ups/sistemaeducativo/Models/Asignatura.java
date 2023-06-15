@@ -12,26 +12,26 @@ public class Asignatura {
 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="asig_id")
-    private int asigId;
+    private Long asigId;
     @Column(name="asig_nombre")
     private String asignombre;
     @Column(name="asig_creditos")
     private int asigCreditos;
 
 
-    public Asignatura(int asigId, String asignombre, int asigCreditos) {
+    public Asignatura(Long asigId, String asignombre, int asigCreditos) {
         this.asigId = asigId;
         this.asignombre = asignombre;
         this.asigCreditos = asigCreditos;
     }
 
 
-    public int getAsigId() {
+    public Long getAsigId() {
         return asigId;
     }
 
 
-    public void setAsigId(int asigId) {
+    public void setAsigId(Long asigId) {
         this.asigId = asigId;
     }
 
@@ -60,7 +60,7 @@ public class Asignatura {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + asigId;
+        result = prime * result + ((asigId == null) ? 0 : asigId.hashCode());
         result = prime * result + ((asignombre == null) ? 0 : asignombre.hashCode());
         result = prime * result + asigCreditos;
         return result;
@@ -76,7 +76,10 @@ public class Asignatura {
         if (getClass() != obj.getClass())
             return false;
         Asignatura other = (Asignatura) obj;
-        if (asigId != other.asigId)
+        if (asigId == null) {
+            if (other.asigId != null)
+                return false;
+        } else if (!asigId.equals(other.asigId))
             return false;
         if (asignombre == null) {
             if (other.asignombre != null)
@@ -93,7 +96,4 @@ public class Asignatura {
     public String toString() {
         return "Asignatura [asigId=" + asigId + ", asignombre=" + asignombre + ", asigCreditos=" + asigCreditos + "]";
     }
-
-    
-    
 }

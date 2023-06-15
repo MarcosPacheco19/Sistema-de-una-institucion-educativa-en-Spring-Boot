@@ -12,20 +12,20 @@ public class GrupoAsignatura {
 
      @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="grp_id")
-    private int grpId;
+    private Long grpId;
     @Column(name="grp_grupo")
     private String grupoAcademino;
     
-    public GrupoAsignatura(int grpId, String grupoAcademino) {
+    public GrupoAsignatura(Long grpId, String grupoAcademino) {
         this.grpId = grpId;
         this.grupoAcademino = grupoAcademino;
     }
 
-    public int getGrpId() {
+    public Long getGrpId() {
         return grpId;
     }
 
-    public void setGrpId(int grpId) {
+    public void setGrpId(Long grpId) {
         this.grpId = grpId;
     }
 
@@ -41,7 +41,7 @@ public class GrupoAsignatura {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + grpId;
+        result = prime * result + ((grpId == null) ? 0 : grpId.hashCode());
         result = prime * result + ((grupoAcademino == null) ? 0 : grupoAcademino.hashCode());
         return result;
     }
@@ -55,7 +55,10 @@ public class GrupoAsignatura {
         if (getClass() != obj.getClass())
             return false;
         GrupoAsignatura other = (GrupoAsignatura) obj;
-        if (grpId != other.grpId)
+        if (grpId == null) {
+            if (other.grpId != null)
+                return false;
+        } else if (!grpId.equals(other.grpId))
             return false;
         if (grupoAcademino == null) {
             if (other.grupoAcademino != null)
@@ -69,8 +72,4 @@ public class GrupoAsignatura {
     public String toString() {
         return "GrupoAsignatura [grpId=" + grpId + ", grupoAcademino=" + grupoAcademino + "]";
     }
-    
-    
-    
-
 }

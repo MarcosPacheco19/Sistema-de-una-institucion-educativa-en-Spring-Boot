@@ -1,8 +1,5 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
-import java.sql.Date;
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,27 +12,25 @@ public class CarreraEstudiante {
 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="car_est_id")
-    private String carEstId;
+    private Long carEstId;
     @Column(name="car_est_fecha_inscripcion")
-    private Date carEstFechaInscripcion;
+    private String carEstFechaInscripcion;
 
-
-
-    public CarreraEstudiante(String carEstId, Date carEstFechaInscripcion) {
+    public CarreraEstudiante(Long carEstId, String carEstFechaInscripcion) {
         this.carEstId = carEstId;
         this.carEstFechaInscripcion = carEstFechaInscripcion;
     }
 
-    public String getCarEstId() {
+    public Long getCarEstId() {
         return carEstId;
     }
-    public void setCarEstId(String carEstId) {
+    public void setCarEstId(Long carEstId) {
         this.carEstId = carEstId;
     }
-    public Date getCarEstFechaInscripcion() {
+    public String getCarEstFechaInscripcion() {
         return carEstFechaInscripcion;
     }
-    public void setCarEstFechaInscripcion(Date carEstFechaInscripcion) {
+    public void setCarEstFechaInscripcion(String carEstFechaInscripcion) {
         this.carEstFechaInscripcion = carEstFechaInscripcion;
     }
 
