@@ -4,14 +4,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Empleados")
+@PrimaryKeyJoinColumn(referencedColumnName = "emp_usuario")
 public class Empleado extends Usuario {
     
-    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="emp_id")
     private Long empId;
