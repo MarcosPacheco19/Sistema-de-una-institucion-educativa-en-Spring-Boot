@@ -1,32 +1,67 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+
+@Entity
+@Table(name = "PeriodoLectivo")
 public class PeriodoLectivo {
 
-    private Long pl_id;
-    private String pl_descripcion;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "per_id")
+    private Long plId;
+    @Column(name = "per_descripcion")
+    private String plDescripcion;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "grp_id")
+    private List<GrupoAsignatura> grupoAsignaturas;
 
     public PeriodoLectivo() {
     }
 
-    public PeriodoLectivo(Long pl_id, String pl_descripcion) {
-        this.pl_id = pl_id;
-        this.pl_descripcion = pl_descripcion;
+    public PeriodoLectivo(Long plId, String plDescripcion, List<GrupoAsignatura> grupoAsignaturas) {
+        this.plId = plId;
+        this.plDescripcion = plDescripcion;
+        this.grupoAsignaturas = grupoAsignaturas;
     }
 
-    public Long getPl_id() {
-        return pl_id;
+    public Long getPlId() {
+        return plId;
     }
 
-    public void setPl_id(Long pl_id) {
-        this.pl_id = pl_id;
+    public void setPlId(Long plId) {
+        this.plId = plId;
     }
 
-    public String getPl_descripcion() {
-        return pl_descripcion;
+    public String getPlDescripcion() {
+        return plDescripcion;
     }
 
-    public void setPl_descripcion(String pl_descripcion) {
-        this.pl_descripcion = pl_descripcion;
+    public void setPlDescripcion(String plDescripcion) {
+        this.plDescripcion = plDescripcion;
+    }
+
+    public List<GrupoAsignatura> getGrupoAsignaturas() {
+        return grupoAsignaturas;
+    }
+
+    public void setGrupoAsignaturas(List<GrupoAsignatura> grupoAsignaturas) {
+        this.grupoAsignaturas = grupoAsignaturas;
+    }
+
+    @Override
+    public String toString() {
+        return "PeriodoLectivo [plId=" + plId + ", plDescripcion=" + plDescripcion + ", grupoAsignaturas="
+                + grupoAsignaturas + "]";
     }
 
 }

@@ -1,52 +1,99 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
+import jakarta.persistence.Table;
+
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+
+@Entity
+@Table(name = "Horario")
 public class Horario {
 
-    private Long hor_id;
-    private String hor_date;
-    private String hor_hora_entrada;
-    private String hor_hora_salida;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "hor_id")
+    private Long horId;
+    @Column(name = "hor_dia")
+    private String horDia;
+    @Column(name = "hor_hora_entrada")
+    private String horHoraEntrada;
+    @Column(name = "hor_hora_salida")
+    private String horHoraSalida;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "eul_id")
+    private Aulas aulas;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "grp_id")
+    private List<GrupoAsignatura> grupoAsignaturas;
+
+    public Horario(Long horId, String horDia, String horHoraEntrada, String horHoraSalida, Aulas aulas,
+            List<GrupoAsignatura> grupoAsignaturas) {
+        this.horId = horId;
+        this.horDia = horDia;
+        this.horHoraEntrada = horHoraEntrada;
+        this.horHoraSalida = horHoraSalida;
+        this.aulas = aulas;
+        this.grupoAsignaturas = grupoAsignaturas;
+    }
 
     public Horario() {
     }
 
-    public Horario(Long hor_id, String hor_date, String hor_hora_entrada, String hor_hora_salida) {
-        this.hor_id = hor_id;
-        this.hor_date = hor_date;
-        this.hor_hora_entrada = hor_hora_entrada;
-        this.hor_hora_salida = hor_hora_salida;
+    public Long getHorId() {
+        return horId;
     }
 
-    public Long getHor_id() {
-        return hor_id;
+    public void setHorId(Long horId) {
+        this.horId = horId;
     }
 
-    public void setHor_id(Long hor_id) {
-        this.hor_id = hor_id;
+    public String getHorDia() {
+        return horDia;
     }
 
-    public String getHor_date() {
-        return hor_date;
+    public void setHorDia(String horDia) {
+        this.horDia = horDia;
     }
 
-    public void setHor_date(String hor_date) {
-        this.hor_date = hor_date;
+    public String getHorHoraEntrada() {
+        return horHoraEntrada;
     }
 
-    public String getHor_hora_entrada() {
-        return hor_hora_entrada;
+    public void setHorHoraEntrada(String horHoraEntrada) {
+        this.horHoraEntrada = horHoraEntrada;
     }
 
-    public void setHor_hora_entrada(String hor_hora_entrada) {
-        this.hor_hora_entrada = hor_hora_entrada;
+    public String getHorHoraSalida() {
+        return horHoraSalida;
     }
 
-    public String getHor_hora_salida() {
-        return hor_hora_salida;
+    public void setHorHoraSalida(String horHoraSalida) {
+        this.horHoraSalida = horHoraSalida;
     }
 
-    public void setHor_hora_salida(String hor_hora_salida) {
-        this.hor_hora_salida = hor_hora_salida;
+    public Aulas getAulas() {
+        return aulas;
+    }
+
+    public void setAulas(Aulas aulas) {
+        this.aulas = aulas;
+    }
+
+    public List<GrupoAsignatura> getGrupoAsignaturas() {
+        return grupoAsignaturas;
+    }
+
+    public void setGrupoAsignaturas(List<GrupoAsignatura> grupoAsignaturas) {
+        this.grupoAsignaturas = grupoAsignaturas;
     }
 
 }

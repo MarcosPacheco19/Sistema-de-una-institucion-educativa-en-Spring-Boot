@@ -1,42 +1,69 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+
+@Entity
+@Table(name = "Caja")
 public class Caja {
 
-    private Long caj_id;
-    private double caj_saldo_inicial;
-    private String caj_fecha;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "caj_id")
+    private Long cajId;
+    @Column(name = "caj_saldo_inicial")
+    private double cajSaldoInicial;
+    @Column(name = "caj_fecha")
+    private String cajFecha;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cab_id")
+    private CabeceraFactura cabeceraFactura;
 
     public Caja() {
     }
 
-    public Caja(Long caj_id, double caj_saldo_inicial, String caj_fecha) {
-        this.caj_id = caj_id;
-        this.caj_saldo_inicial = caj_saldo_inicial;
-        this.caj_fecha = caj_fecha;
+    public Caja(Long cajId, double cajSaldoInicial, String cajFecha, CabeceraFactura cabeceraFactura) {
+        this.cajId = cajId;
+        this.cajSaldoInicial = cajSaldoInicial;
+        this.cajFecha = cajFecha;
+        this.cabeceraFactura = cabeceraFactura;
     }
 
-    public Long getCaj_id() {
-        return caj_id;
+    public Long getCajId() {
+        return cajId;
     }
 
-    public void setCaj_id(Long caj_id) {
-        this.caj_id = caj_id;
+    public void setCajId(Long cajId) {
+        this.cajId = cajId;
     }
 
-    public double getCaj_saldo_inicial() {
-        return caj_saldo_inicial;
+    public double getCajSaldoInicial() {
+        return cajSaldoInicial;
     }
 
-    public void setCaj_saldo_inicial(double caj_saldo_inicial) {
-        this.caj_saldo_inicial = caj_saldo_inicial;
+    public void setCajSaldoInicial(double cajSaldoInicial) {
+        this.cajSaldoInicial = cajSaldoInicial;
     }
 
-    public String getCaj_fecha() {
-        return caj_fecha;
+    public String getCajFecha() {
+        return cajFecha;
     }
 
-    public void setCaj_fecha(String caj_fecha) {
-        this.caj_fecha = caj_fecha;
+    public void setCajFecha(String cajFecha) {
+        this.cajFecha = cajFecha;
+    }
+
+    public CabeceraFactura getCabeceraFactura() {
+        return cabeceraFactura;
+    }
+
+    public void setCabeceraFactura(CabeceraFactura cabeceraFactura) {
+        this.cabeceraFactura = cabeceraFactura;
     }
 
 }
