@@ -62,12 +62,12 @@ public class CarreraEstudianteServicio {
 
         if (!existencia) {
             datos.put("Error", true);
-            datos.put("message", "El ID del Estudiante no existe");
+            datos.put("message", "El ID de la Carrera del estudiante no existe");
             return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
         }
 
         carreraEstudianteRepositorio.deleteByCarEstId(id);
-        datos.put("message", "Estudiante Eliminado");
+        datos.put("message", "Carrera Estudiante eliminado");
         return new ResponseEntity<>(datos, HttpStatus.ACCEPTED);
     }
 
@@ -77,7 +77,7 @@ public class CarreraEstudianteServicio {
             CarreraEstudiante carreraEstudiante = carreraEstudianteOptional.get();
             return new ResponseEntity<>(carreraEstudiante, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Estudiante no encontrado", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Carrera estudiante no encontrado", HttpStatus.NOT_FOUND);
         }
     }
 }
