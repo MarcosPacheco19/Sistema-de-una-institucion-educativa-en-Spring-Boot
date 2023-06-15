@@ -50,6 +50,14 @@ public class CabeceraFactura {
     @Column(name="cab_total")
     private double cabTotal;
 
+    public Long getCabId(){
+        return cabId;
+    }
+
+    public void setCabId(Long cabId){
+        this.cabId = cabId;
+    }
+
     public String getCabCedula() {
         return cabCedula;
     }
@@ -116,6 +124,8 @@ public class CabeceraFactura {
     public void setCabTotal(double cabTotal) {
         this.cabTotal = cabTotal;
     }    
+
+
 
      @Override
     public int hashCode() {
