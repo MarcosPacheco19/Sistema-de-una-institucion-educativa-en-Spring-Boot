@@ -1,20 +1,15 @@
 package ec.edu.ups.sistemaeducativo.Services;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import ec.edu.ups.sistemaeducativo.Models.CarreraEstudiante;
 import ec.edu.ups.sistemaeducativo.Repositories.CarreraEstudianteRepositorio;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-import java.util.List;
+
 
 @Service
 public class CarreraEstudianteServicio {
@@ -37,7 +32,7 @@ public class CarreraEstudianteServicio {
 
         if (respuesta.isPresent()) {
             datos.put("Error", true);
-            datos.put("message", "Ya existe el estudiante");
+            datos.put("message", "El estudiante ya esta en una Carrra");
             return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
         }
 
@@ -52,7 +47,7 @@ public class CarreraEstudianteServicio {
 
         if (respuesta.isEmpty()) {
             datos.put("Error", true);
-            datos.put("message", "No se encontró el estudiante con el ID proporcionado");
+            datos.put("message", "No se encontró el La carrera del estudiante por el id");
             return new ResponseEntity<>(datos, HttpStatus.NOT_FOUND);
         }
 
