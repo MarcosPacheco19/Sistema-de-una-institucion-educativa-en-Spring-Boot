@@ -1,8 +1,21 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
+
+@Entity
+@Table (name="Asignatura")
 public class Asignatura {
+
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="asig_id")
     private int asigId;
+    @Column(name="asig_nombre")
     private String asignombre;
+    @Column(name="asig_creditos")
     private int asigCreditos;
 
 

@@ -2,10 +2,21 @@ package ec.edu.ups.sistemaeducativo.Models;
 
 import java.sql.Date;
 
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
+
+@Entity
+@Table (name="CarreraEstudiante")
 public class CarreraEstudiante {
 
-    
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="car_est_id")
     private String carEstId;
+    @Column(name="car_est_fecha_inscripcion")
     private Date carEstFechaInscripcion;
 
 
