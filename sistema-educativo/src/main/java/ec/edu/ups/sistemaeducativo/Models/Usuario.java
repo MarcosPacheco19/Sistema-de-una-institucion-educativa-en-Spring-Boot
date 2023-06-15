@@ -1,19 +1,34 @@
 package ec.edu.ups.sistemaeducativo.Models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="Usuarios")
 public class Usuario {
     
-
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="usu_id")
     private Long usuId;
+    @Column(name="usu_nombre")
     private String usuNombre;
+    @Column(name="usu_apellido")
     private String usuApellido;
+    @Column(name="usu_correo")
     private String usuCorreo;
+    @Column(name="usu_password")
     private String usuPassword;
+    @Column(name="usu_perfil_acceso")
     private String usuPerfilAcceso;
+    @Column(name="usu_cedula")
     private String usuCedula;
     
     public Usuario() {

@@ -13,7 +13,7 @@ public class DetalleFactura {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="det_id")
-    private long det_id;
+    private long detId;
 
     @Column(name="det_descripcion")
     private String detDescripcion;
@@ -47,7 +47,7 @@ public class DetalleFactura {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (int) (det_id ^ (det_id >>> 32));
+        result = prime * result + (int) (detId ^ (detId >>> 32));
         return result;
     }
     @Override
@@ -59,7 +59,7 @@ public class DetalleFactura {
         if (getClass() != obj.getClass())
             return false;
         DetalleFactura other = (DetalleFactura) obj;
-        if (det_id != other.det_id)
+        if (detId != other.detId)
             return false;
         return true;
     }
