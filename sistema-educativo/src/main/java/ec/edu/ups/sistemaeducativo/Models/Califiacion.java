@@ -2,11 +2,24 @@ package ec.edu.ups.sistemaeducativo.Models;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
+
+@Entity
+@Table (name="Calificaciones")
 public class Califiacion {
     
+     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="cali_id")
     private int caliId;
+    @Column(name="cali_nota")
     private int nota;
+    @Column(name="cali_comentario")
     private String comentario;
+    @Column(name="asig_fecha_calificacion")
     private Date fechaCalificacion;
    
    
