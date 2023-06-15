@@ -21,6 +21,13 @@ public class RubroDeCobro {
 
     @Column(name="adm_areaDeTrabajo")
     public String admAreaDeTrabajo;
+    
+    public long getAdmId() {
+        return admId;
+    }
+    public void setAdmId(long admId) {
+        this.admId = admId;
+    }
     public String getAdmTipoDePago() {
         return admTipoDePago;
     }
@@ -33,6 +40,7 @@ public class RubroDeCobro {
     public void setAdmAreaDeTrabajo(String admAreaDeTrabajo) {
         this.admAreaDeTrabajo = admAreaDeTrabajo;
     }
+    
     @Override
     public int hashCode() {
         final int prime = 31;

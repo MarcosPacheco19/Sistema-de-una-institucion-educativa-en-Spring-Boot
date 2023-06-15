@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +20,10 @@ public class Titulo {
 
     @Column(name="tit_nombre")
     private String titnombre;
+
+    @OneToMany
+    @JoinColumn(name="pro_id")
+    private Profesor profesor;
     
     public Titulo() {
     }
@@ -45,6 +51,14 @@ public class Titulo {
 
     public void setTitnombre(String titnombre) {
         this.titnombre = titnombre;
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
 
     @Override
