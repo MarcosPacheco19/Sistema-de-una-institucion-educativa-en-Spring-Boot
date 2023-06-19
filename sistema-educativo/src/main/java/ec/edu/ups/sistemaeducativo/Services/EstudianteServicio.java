@@ -14,55 +14,63 @@ import ec.edu.ups.sistemaeducativo.Repositories.EstudianteRepositorio;
 
 @Service
 public class EstudianteServicio {
-    
-    private final EstudianteRepositorio estudianteRepositorio;
-    HashMap<String, Object> datos;
 
-    @Autowired
-	public EstudianteServicio(EstudianteRepositorio estudianteRepositorio){
-		this.estudianteRepositorio=estudianteRepositorio;
+	@Autowired
+	private EstudianteRepositorio estudianteRepositorio;
+	HashMap<String, Object> datos;
+
+	@Autowired
+	public EstudianteServicio(EstudianteRepositorio estudianteRepositorio) {
+		this.estudianteRepositorio = estudianteRepositorio;
 	}
 
-    public List<Estudiante> getEstudiantes(){
+	public List<Estudiante> getEstudiantes() {
 		return this.estudianteRepositorio.findAll();
 	}
 
-    public ResponseEntity<Object> nuevoEstudiante (Estudiante estudiante) {
+	/*
+	 * public ResponseEntity<Object> nuevoEstudiante (Estudiante estudiante) {
+	 * datos = new HashMap<>();
+	 * 
+	 * Optional<Estudiante> respuesta =
+	 * estudianteRepositorio.findEstudiantebyCedula(estudiante.getUsuCedula());
+	 * 
+	 * if (respuesta.isPresent()) {
+	 * datos.put("Error", true);
+	 * datos.put("message", "Ya existe el estudiante");
+	 * return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
+	 * }
+	 * 
+	 * estudianteRepositorio.save(estudiante);
+	 * return new ResponseEntity<>(datos, HttpStatus.CREATED);
+	 * }
+	 */
+
+	public Estudiante nuevoEstudiante(Estudiante estudiante){
+		return estudianteRepositorio.save(estudiante);
+	}
+
+	public ResponseEntity<Object> actualizarEstudiante(Estudiante estudiante) {
 		datos = new HashMap<>();
 
-        Optional<Estudiante> respuesta = estudianteRepositorio.findEstudiantebyCedula(estudiante.getUsuCedula());
-        
-        if (respuesta.isPresent()) {
-			datos.put("Error", true);
-			datos.put("message", "Ya existe el estudiante");
-			return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
-		}
+		Optional<Estudiante> respuesta = estudianteRepositorio.findById(estudiante.getUsuId());
 
-        estudianteRepositorio.save(estudiante);
-        return new ResponseEntity<>(datos, HttpStatus.CREATED);
-    }
-
-    public ResponseEntity<Object> actualizarEstudiante (Estudiante estudiante){
-        datos = new HashMap<>();
-
-        Optional<Estudiante> respuesta = estudianteRepositorio.findById(estudiante.getEstId());
-
-        if (respuesta.isEmpty()) {
+		if (respuesta.isEmpty()) {
 			datos.put("Error", true);
 			datos.put("message", "No se encontró el estudiante con el ID proporcionado");
 			return new ResponseEntity<>(datos, HttpStatus.NOT_FOUND);
 		}
 
-        estudianteRepositorio.save(estudiante);
+		estudianteRepositorio.save(estudiante);
 
-        return new ResponseEntity<>(datos, HttpStatus.OK);
-    }
+		return new ResponseEntity<>(datos, HttpStatus.OK);
+	}
 
-    public ResponseEntity<Object> eliminarEstudiante (Long id){
-		boolean existencia =this.estudianteRepositorio.existsById(id);
+	public ResponseEntity<Object> eliminarEstudiante(Long id) {
+		boolean existencia = this.estudianteRepositorio.existsById(id);
 		datos = new HashMap<>();
 
-		if(!existencia){
+		if (!existencia) {
 			datos.put("Error", true);
 			datos.put("message", "El ID del Estudiante no existe");
 			return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
@@ -73,13 +81,13 @@ public class EstudianteServicio {
 		return new ResponseEntity<>(datos, HttpStatus.ACCEPTED);
 	}
 
-    public ResponseEntity<Object> buscarEstudiante (Long id){
+	public ResponseEntity<Object> buscarEstudiante(Long id) {
 		Optional<Estudiante> estudianteOptional = estudianteRepositorio.findById(id);
-    	if (estudianteOptional.isPresent()) {
-        	Estudiante estudiante = estudianteOptional.get();
-        return new ResponseEntity<>(estudiante, HttpStatus.OK);
-    	} else {
-        	return new ResponseEntity<>("Estudiante no encontrado", HttpStatus.NOT_FOUND);
-    	}
+		if (estudianteOptional.isPresent()) {
+			Estudiante estudiante = estudianteOptional.get();
+			return new ResponseEntity<>(estudiante, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>("Estudiante no encontrado", HttpStatus.NOT_FOUND);
+		}
 	}
 }

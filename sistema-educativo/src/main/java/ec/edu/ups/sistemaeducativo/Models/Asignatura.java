@@ -25,6 +25,9 @@ public class Asignatura {
         this.asigCreditos = asigCreditos;
     }
 
+    public Asignatura() {
+    }
+
 
     public Long getAsigId() {
         return asigId;
