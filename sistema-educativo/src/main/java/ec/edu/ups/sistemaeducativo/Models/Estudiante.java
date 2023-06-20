@@ -18,7 +18,8 @@ import jakarta.persistence.Table;
 public class Estudiante extends Usuario {
     
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    
+    @Column(name="est_id")
+    private Long estId;
     @Column(name="est_grado_academico")
     private String estGradoAcademico;
 
@@ -30,9 +31,17 @@ public class Estudiante extends Usuario {
     }
 
     public Estudiante(Long usuId, String usuNombre, String usuApellido, String usuCorreo, String usuPassword,
-            String usuPerfilAcceso, String usuCedula, String estGradoAcademico) {
+            String usuPerfilAcceso, String usuCedula, Long estId, String estGradoAcademico,
+            List<Matricula> matriculas) {
         super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula);
+        this.estId = estId;
         this.estGradoAcademico = estGradoAcademico;
+        this.matriculas = matriculas;
+    }
+
+    public Estudiante(Long usuId, Long estId) {
+        super(usuId);
+        this.estId = estId;
     }
 
     public String getEstGradoAcademico() {
@@ -51,42 +60,12 @@ public class Estudiante extends Usuario {
         this.matriculas = matriculas;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((estGradoAcademico == null) ? 0 : estGradoAcademico.hashCode());
-        result = prime * result + ((matriculas == null) ? 0 : matriculas.hashCode());
-        return result;
+    public Long getEstId() {
+        return estId;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Estudiante other = (Estudiante) obj;
-        if (estGradoAcademico == null) {
-            if (other.estGradoAcademico != null)
-                return false;
-        } else if (!estGradoAcademico.equals(other.estGradoAcademico))
-            return false;
-        if (matriculas == null) {
-            if (other.matriculas != null)
-                return false;
-        } else if (!matriculas.equals(other.matriculas))
-            return false;
-        return true;
+    public void setEstId(Long estId) {
+        this.estId = estId;
     }
-
-    @Override
-    public String toString() {
-        return "Estudiante [estGradoAcademico=" + estGradoAcademico + ", matriculas=" + matriculas + "]";
-    }
-
-    
 
 }
