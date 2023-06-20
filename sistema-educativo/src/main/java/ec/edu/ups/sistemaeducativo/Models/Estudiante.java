@@ -22,7 +22,6 @@ public class Estudiante extends Usuario {
     private Long estId;
     @Column(name="est_grado_academico")
     private String estGradoAcademico;
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="mat_id")
     private List<Matricula> matriculas;
