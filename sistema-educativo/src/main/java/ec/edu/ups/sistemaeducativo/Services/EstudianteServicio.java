@@ -28,28 +28,23 @@ public class EstudianteServicio {
 		return this.estudianteRepositorio.findAll();
 	}
 
-	/*
-	 * public ResponseEntity<Object> nuevoEstudiante (Estudiante estudiante) {
-	 * datos = new HashMap<>();
-	 * 
-	 * Optional<Estudiante> respuesta =
-	 * estudianteRepositorio.findEstudiantebyCedula(estudiante.getUsuCedula());
-	 * 
-	 * if (respuesta.isPresent()) {
-	 * datos.put("Error", true);
-	 * datos.put("message", "Ya existe el estudiante");
-	 * return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
-	 * }
-	 * 
-	 * estudianteRepositorio.save(estudiante);
-	 * return new ResponseEntity<>(datos, HttpStatus.CREATED);
-	 * }
-	 */
-
-	public Estudiante nuevoEstudiante(Estudiante estudiante){
-		return estudianteRepositorio.save(estudiante);
+	
+	public ResponseEntity<Object> nuevoEstudiante (Estudiante estudiante) {
+		datos = new HashMap<>();
+		
+		Optional<Estudiante> respuesta =
+		estudianteRepositorio.findEstudiantebyCedula(estudiante.getUsuCedula());
+		
+		if (respuesta.isPresent()) {
+		datos.put("Error", true);
+		datos.put("message", "Ya existe el estudiante");
+		return new ResponseEntity<>(datos, HttpStatus.CONFLICT);
+		}
+		
+		estudianteRepositorio.save(estudiante);
+		return new ResponseEntity<>(datos, HttpStatus.CREATED);
 	}
-
+	 
 	public ResponseEntity<Object> actualizarEstudiante(Estudiante estudiante) {
 		datos = new HashMap<>();
 

@@ -27,7 +27,6 @@ public class Aulas {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "edi_id")
     private Edificio edificio;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "hor_id")
     private List<Horario> horarios;
