@@ -3,8 +3,6 @@ package ec.edu.ups.sistemaeducativo.Controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,32 +23,32 @@ public class EstudianteControlador {
     private final EstudianteServicio estudianteServicio;
 
     @Autowired
-    public EstudianteControlador (EstudianteServicio estudianteServicio){
+    public EstudianteControlador(EstudianteServicio estudianteServicio) {
         this.estudianteServicio = estudianteServicio;
     }
 
     @GetMapping(path = "listar")
-    public List<Estudiante> getUsuarios(){
+    public List<Estudiante> getUsuarios() {
         return this.estudianteServicio.getEstudiantes();
     }
 
     @PostMapping(path = "registrar")
-    public ResponseEntity<Object> registrarEstudiante(@RequestBody Estudiante estudiante){
-        return this.estudianteServicio.nuevoEstudiante(estudiante);    
+    public ResponseEntity<Object> registrarEstudiante(@RequestBody Estudiante estudiante) {
+        return this.estudianteServicio.nuevoEstudiante(estudiante);
     }
 
     @PatchMapping(path = "actualizar")
-    public ResponseEntity<Object> actualizarEstudiante(@RequestBody Estudiante estudiante){
+    public ResponseEntity<Object> actualizarEstudiante(@RequestBody Estudiante estudiante) {
         return this.estudianteServicio.actualizarEstudiante(estudiante);
     }
- 
+
     @DeleteMapping(path = "eliminar/{estId}")
-    public ResponseEntity<Object> eliminarEstudiante(@PathVariable("estId") Long id){
+    public ResponseEntity<Object> eliminarEstudiante(@PathVariable("estId") Long id) {
         return this.estudianteServicio.eliminarEstudiante(id);
     }
 
     @GetMapping(path = "buscar/{estId}")
-    public ResponseEntity<Object> buscarEstudiante (@PathVariable("estId") Long id){
+    public ResponseEntity<Object> buscarEstudiante(@PathVariable("estId") Long id) {
         return this.estudianteServicio.buscarEstudiante(id);
     }
 }

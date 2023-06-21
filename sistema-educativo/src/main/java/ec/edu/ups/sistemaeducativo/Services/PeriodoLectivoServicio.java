@@ -42,7 +42,7 @@ public class PeriodoLectivoServicio {
         return new ResponseEntity<>(datos, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Object> actualizarEstudiante(PeriodoLectivo periodoLectivo) {
+    public ResponseEntity<Object> actualizarPeriodoLectivo(PeriodoLectivo periodoLectivo) {
         datos = new HashMap<>();
 
         Optional<PeriodoLectivo> respuesta = periodoLectivoRepositorio.findById(periodoLectivo.getPlId());

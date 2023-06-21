@@ -40,7 +40,7 @@ public class PeriodoLectivoControlador {
 
     @PatchMapping(path = "actualizar")
     public ResponseEntity<Object> actualizarPeriodoLectivo(@RequestBody PeriodoLectivo periodoLectivo) {
-        return this.periodoLectivoServicio.actualizarEstudiante(periodoLectivo);
+        return this.periodoLectivoServicio.actualizarPeriodoLectivo(periodoLectivo);
     }
 
     @DeleteMapping(path = "eliminar/{per_id}")
