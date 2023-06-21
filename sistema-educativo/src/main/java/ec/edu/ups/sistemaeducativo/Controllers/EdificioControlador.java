@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.ups.sistemaeducativo.Models.Edificio;
-import ec.edu.ups.sistemaeducativo.Models.PeriodoLectivo;
 import ec.edu.ups.sistemaeducativo.Services.EdificioServicio;
-import ec.edu.ups.sistemaeducativo.Services.PeriodoLectivoServicio;
 
 @RestController
 @RequestMapping(path = "edificio")
