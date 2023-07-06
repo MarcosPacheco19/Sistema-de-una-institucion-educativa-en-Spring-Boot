@@ -34,6 +34,14 @@ public class Carrera {
         this.carNombre = carNombre;
         this.carTitulo = carTitulo;
     }
+    
+    public Carrera() {
+    }
+
+    public Carrera(Long carId) {
+        this.carId = carId;
+    }
+
 
     public Long getCarId() {
         return carId;

@@ -21,6 +21,13 @@ public class CarreraEstudiante {
         this.carEstFechaInscripcion = carEstFechaInscripcion;
     }
 
+    public CarreraEstudiante() {
+    }
+
+    public CarreraEstudiante(Long carEstId) {
+        this.carEstId = carEstId;
+    }
+
     public Long getCarEstId() {
         return carEstId;
     }

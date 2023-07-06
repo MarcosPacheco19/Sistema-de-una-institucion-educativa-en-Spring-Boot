@@ -30,6 +30,12 @@ public class Calificacion {
         this.fechaCalificacion = fechaCalificacion;
     }
 
+    public Calificacion() {
+    }
+
+    public Calificacion(Long caliId) {
+        this.caliId = caliId;
+    }
 
     public Long getCaliId() {
         return caliId;

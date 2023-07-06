@@ -23,6 +23,13 @@ public class GrupoAsignatura {
         this.grupoAcademino = grupoAcademino;
     }
 
+    public GrupoAsignatura() {
+    }
+
+    public GrupoAsignatura(Long grpId) {
+        this.grpId = grpId;
+    }
+
     public Long getGrpId() {
         return grpId;
     }
