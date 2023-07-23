@@ -17,7 +17,7 @@ import ec.edu.ups.sistemaeducativo.Models.CarreraEstudiante;
 import ec.edu.ups.sistemaeducativo.Services.CarreraEstudianteServicio;
 
 @RestController
-@RequestMapping("carreraEstudiantes")
+@RequestMapping(path = "carreraEstudiantes")
 public class CarreraEstudianteControlador {
     
     private final CarreraEstudianteServicio carreraEstudianteServicio;

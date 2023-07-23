@@ -47,7 +47,7 @@ public class GrupoAsignaturaServicioTest {
         GrupoAsignatura grupoAsignatura = new GrupoAsignatura();
         grupoAsignatura.setGrupoAcademino("Grupo Académico");
 
-        when(grupoAsignaturaRepositorio.findGrupoAsignaturaByGrupo(grupoAsignatura.getGrupoAcademino())).thenReturn(Optional.of(grupoAsignatura));
+        when(grupoAsignaturaRepositorio.findGrupoAsignaturaByGrupoAcademino(grupoAsignatura.getGrupoAcademino())).thenReturn(Optional.of(grupoAsignatura));
 
         ResponseEntity<Object> resultado = grupoAsignaturaServicio.nuevoGrupoAsignatura(grupoAsignatura);
 
@@ -59,7 +59,7 @@ public class GrupoAsignaturaServicioTest {
         GrupoAsignatura grupoAsignatura = new GrupoAsignatura();
         grupoAsignatura.setGrupoAcademino("Grupo Académico");
 
-        when(grupoAsignaturaRepositorio.findGrupoAsignaturaByGrupo(grupoAsignatura.getGrupoAcademino())).thenReturn(Optional.empty());
+        when(grupoAsignaturaRepositorio.findGrupoAsignaturaByGrupoAcademino(grupoAsignatura.getGrupoAcademino())).thenReturn(Optional.empty());
         when(grupoAsignaturaRepositorio.save(grupoAsignatura)).thenReturn(grupoAsignatura);
 
         ResponseEntity<Object> resultado = grupoAsignaturaServicio.nuevoGrupoAsignatura(grupoAsignatura);

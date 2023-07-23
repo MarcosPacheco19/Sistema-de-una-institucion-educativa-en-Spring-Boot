@@ -7,10 +7,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
 import ec.edu.ups.sistemaeducativo.Models.PeriodoLectivo;
 
 import ec.edu.ups.sistemaeducativo.Repositories.PeriodoLectivoRepositorio;
 
+@Service
 public class PeriodoLectivoServicio {
 
     @Autowired
@@ -30,7 +33,7 @@ public class PeriodoLectivoServicio {
         datos = new HashMap<>();
 
         Optional<PeriodoLectivo> respuesta = periodoLectivoRepositorio
-                .findPeridiodoLectivobyId(periodoLectivo.getPlId());
+                .findPeridiodoLectivoByPlId(periodoLectivo.getPlId());
 
         if (respuesta.isPresent()) {
             datos.put("Error", true);

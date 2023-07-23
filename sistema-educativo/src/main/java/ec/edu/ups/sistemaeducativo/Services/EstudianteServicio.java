@@ -33,7 +33,7 @@ public class EstudianteServicio {
 		datos = new HashMap<>();
 		
 		Optional<Estudiante> respuesta =
-		estudianteRepositorio.findEstudiantebyCedula(estudiante.getUsuCedula());
+		estudianteRepositorio.findEstudianteByUsuCedula(estudiante.getUsuCedula());
 		
 		if (respuesta.isPresent()) {
 		datos.put("Error", true);

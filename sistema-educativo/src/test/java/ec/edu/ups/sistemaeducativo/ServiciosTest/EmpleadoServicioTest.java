@@ -45,7 +45,7 @@ public class EmpleadoServicioTest {
         Empleado empleado = new Empleado();
         empleado.setUsuCedula("1234567890");
 
-        when(empleadoRepositorio.findEmpleadoByAreaTrabajo(empleado.getUsuCedula())).thenReturn(Optional.of(empleado));
+        when(empleadoRepositorio.findEmpleadoByEmpAreaTrabajo(empleado.getUsuCedula())).thenReturn(Optional.of(empleado));
 
         ResponseEntity<Object> resultado = empleadoServicio.nuevoEmpleado(empleado);
 
@@ -57,7 +57,7 @@ public class EmpleadoServicioTest {
         Empleado empleado = new Empleado();
         empleado.setUsuCedula("1234567890");
 
-        when(empleadoRepositorio.findEmpleadoByAreaTrabajo(empleado.getUsuCedula())).thenReturn(Optional.empty());
+        when(empleadoRepositorio.findEmpleadoByEmpAreaTrabajo(empleado.getUsuCedula())).thenReturn(Optional.empty());
         when(empleadoRepositorio.save(empleado)).thenReturn(empleado);
 
         ResponseEntity<Object> resultado = empleadoServicio.nuevoEmpleado(empleado);
@@ -68,9 +68,9 @@ public class EmpleadoServicioTest {
     @Test
     public void testActualizarEmpleadoNoExistente() {
         Empleado empleado = new Empleado();
-        empleado.setEmpId(1L);
+        empleado.setUsuId(1L);
 
-        when(empleadoRepositorio.findById(empleado.getEmpId())).thenReturn(Optional.empty());
+        when(empleadoRepositorio.findById(empleado.getUsuId())).thenReturn(Optional.empty());
 
         ResponseEntity<Object> resultado = empleadoServicio.actualizarEmpleado(empleado);
 
@@ -80,9 +80,9 @@ public class EmpleadoServicioTest {
     @Test
     public void testActualizarEmpleadoExistente() {
         Empleado empleado = new Empleado();
-        empleado.setEmpId(1L);
+        empleado.setUsuId(1L);
 
-        when(empleadoRepositorio.findById(empleado.getEmpId())).thenReturn(Optional.of(empleado));
+        when(empleadoRepositorio.findById(empleado.getUsuId())).thenReturn(Optional.of(empleado));
         when(empleadoRepositorio.save(empleado)).thenReturn(empleado);
 
         ResponseEntity<Object> resultado = empleadoServicio.actualizarEmpleado(empleado);
@@ -128,7 +128,7 @@ public class EmpleadoServicioTest {
     public void testBuscarEmpleadoExistente() {
         Long id = 1L;
         Empleado empleado = new Empleado();
-        empleado.setEmpId(id);
+        empleado.setUsuId(id);
 
         when(empleadoRepositorio.findById(id)).thenReturn(Optional.of(empleado));
 

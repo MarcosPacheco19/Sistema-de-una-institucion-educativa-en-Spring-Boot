@@ -7,10 +7,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import ec.edu.ups.sistemaeducativo.Models.Edificio;
 import ec.edu.ups.sistemaeducativo.Repositories.EdificioRepositrio;
 
+@Service
 public class EdificioServicio {
 
     @Autowired
@@ -30,7 +32,7 @@ public class EdificioServicio {
         datos = new HashMap<>();
 
         Optional<Edificio> respuesta = edificioRepositrio
-                .findEdificiobyId(edificio.getEdiId());
+                .findEdificioByEdiId(edificio.getEdiId());
 
         if (respuesta.isPresent()) {
             datos.put("Error", true);

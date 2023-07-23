@@ -31,7 +31,7 @@ public class EmpleadoServicio {
     public ResponseEntity<Object> nuevoEmpleado (Empleado empleado) {
 		datos = new HashMap<>();
 
-        Optional<Empleado> respuesta = empleadoRepositorio.findEmpleadoByAreaTrabajo(empleado.getUsuCedula());
+        Optional<Empleado> respuesta = empleadoRepositorio.findEmpleadoByEmpAreaTrabajo(empleado.getUsuCedula());
         
         if (respuesta.isPresent()) {
 			datos.put("Error", true);
@@ -46,7 +46,7 @@ public class EmpleadoServicio {
     public ResponseEntity<Object> actualizarEmpleado (Empleado empleado){
         datos = new HashMap<>();
 
-        Optional<Empleado> respuesta = empleadoRepositorio.findById(empleado.getEmpId());
+        Optional<Empleado> respuesta = empleadoRepositorio.findById(empleado.getUsuId());
 
         if (respuesta.isEmpty()) {
 			datos.put("Error", true);

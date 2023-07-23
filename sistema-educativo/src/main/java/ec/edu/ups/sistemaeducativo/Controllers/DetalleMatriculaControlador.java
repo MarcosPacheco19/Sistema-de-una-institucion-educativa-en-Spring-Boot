@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.ups.sistemaeducativo.Models.DetalleMatricula;
 import ec.edu.ups.sistemaeducativo.Services.DetalleMatriculaServicio;
 
+@RestController
+@RequestMapping(path = "detalleMatricula")
 public class DetalleMatriculaControlador {
     
     private final DetalleMatriculaServicio detalleMatriculaServicio;

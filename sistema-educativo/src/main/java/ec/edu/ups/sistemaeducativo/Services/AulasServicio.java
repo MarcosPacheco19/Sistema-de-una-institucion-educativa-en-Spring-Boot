@@ -30,7 +30,7 @@ public class AulasServicio {
     public ResponseEntity<Object> nuevaAula(Aulas aulas) {
         datos = new HashMap<>();
 
-        Optional<Aulas> respuesta = aulasRepositorio.findAulatebyId(aulas.getAulId());
+        Optional<Aulas> respuesta = aulasRepositorio.findAulasByAulId(aulas.getAulId());
 
         if (respuesta.isPresent()) {
             datos.put("Error", true);

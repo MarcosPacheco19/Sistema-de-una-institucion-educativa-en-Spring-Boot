@@ -45,7 +45,7 @@ public class CabeceraFacturasServicioTest {
         CabeceraFactura cabeceraFactura = new CabeceraFactura();
         cabeceraFactura.setCabCorreo("test@test.com");
 
-        when(cabeceraFacturaRepositorio.findCabeceraPorCorreo(cabeceraFactura.getCabCorreo())).thenReturn(Optional.of(cabeceraFactura));
+        when(cabeceraFacturaRepositorio.findCabeceraFacturaByCabCorreo(cabeceraFactura.getCabCorreo())).thenReturn(Optional.of(cabeceraFactura));
 
         ResponseEntity<Object> resultado = cabeceraFacturaServicio.nuevaCabecera(cabeceraFactura);
 
@@ -57,7 +57,7 @@ public class CabeceraFacturasServicioTest {
         CabeceraFactura cabeceraFactura = new CabeceraFactura();
         cabeceraFactura.setCabCorreo("test@test.com");
 
-        when(cabeceraFacturaRepositorio.findCabeceraPorCorreo(cabeceraFactura.getCabCorreo())).thenReturn(Optional.empty());
+        when(cabeceraFacturaRepositorio.findCabeceraFacturaByCabCorreo(cabeceraFactura.getCabCorreo())).thenReturn(Optional.empty());
         when(cabeceraFacturaRepositorio.save(cabeceraFactura)).thenReturn(cabeceraFactura);
 
         ResponseEntity<Object> resultado = cabeceraFacturaServicio.nuevaCabecera(cabeceraFactura);

@@ -32,7 +32,7 @@ public class RubroDeCobroServicio {
     public ResponseEntity<Object> nuevoRubroDeCobro (RubroDeCobro rubroDeCobro) {
         datos = new HashMap<>();
 
-        Optional<RubroDeCobro> respuesta = rubroDeCobroRepositorio.findRubroPorTipoDePago(rubroDeCobro.getAdmTipoDePago());
+        Optional<RubroDeCobro> respuesta = rubroDeCobroRepositorio.findRubroDeCobroByAdmTipoDePago(rubroDeCobro.getAdmTipoDePago());
 
         if(respuesta.isPresent()){
             datos.put("Error", true);

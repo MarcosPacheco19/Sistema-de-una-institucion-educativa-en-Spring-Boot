@@ -10,5 +10,5 @@ import ec.edu.ups.sistemaeducativo.Models.Titulo;
 @Repository
 public interface TituloRepositorio extends JpaRepository<Titulo, Long> {
     
-     Optional<Titulo> findTituloByNombre(String nombreTitulo);
+     Optional<Titulo> findTituloByTitNombre(String nombreTitulo);
 }

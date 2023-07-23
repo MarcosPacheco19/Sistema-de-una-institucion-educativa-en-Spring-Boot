@@ -5,8 +5,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -14,12 +12,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Estudiantes")
-@PrimaryKeyJoinColumn(referencedColumnName = "est_usuario")
+@PrimaryKeyJoinColumn(name = "usu_id")
 public class Estudiante extends Usuario {
-    
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="est_id")
-    private Long estId;
+
     @Column(name="est_grado_academico")
     private String estGradoAcademico;
     @OneToMany(cascade = CascadeType.ALL)
@@ -33,14 +28,12 @@ public class Estudiante extends Usuario {
             String usuPerfilAcceso, String usuCedula, Long estId, String estGradoAcademico,
             List<Matricula> matriculas) {
         super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula);
-        this.estId = estId;
         this.estGradoAcademico = estGradoAcademico;
         this.matriculas = matriculas;
     }
 
-    public Estudiante(Long usuId, Long estId) {
+    public Estudiante(Long usuId) {
         super(usuId);
-        this.estId = estId;
     }
 
     public String getEstGradoAcademico() {
@@ -58,13 +51,4 @@ public class Estudiante extends Usuario {
     public void setMatriculas(List<Matricula> matriculas) {
         this.matriculas = matriculas;
     }
-
-    public Long getEstId() {
-        return estId;
-    }
-
-    public void setEstId(Long estId) {
-        this.estId = estId;
-    }
-
 }

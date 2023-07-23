@@ -46,7 +46,7 @@ public class RubroDeCobroServicioTest {
         RubroDeCobro rubro = new RubroDeCobro();
         rubro.setAdmTipoDePago("tipo1");
 
-        when(rubroDeCobroRepositorio.findRubroPorTipoDePago(rubro.getAdmTipoDePago())).thenReturn(Optional.of(rubro));
+        when(rubroDeCobroRepositorio.findRubroDeCobroByAdmTipoDePago(rubro.getAdmTipoDePago())).thenReturn(Optional.of(rubro));
 
         ResponseEntity<Object> resultado = rubroDeCobroServicio.nuevoRubroDeCobro(rubro);
 
@@ -58,7 +58,7 @@ public class RubroDeCobroServicioTest {
         RubroDeCobro rubro = new RubroDeCobro();
         rubro.setAdmTipoDePago("tipo1");
 
-        when(rubroDeCobroRepositorio.findRubroPorTipoDePago(rubro.getAdmTipoDePago())).thenReturn(Optional.empty());
+        when(rubroDeCobroRepositorio.findRubroDeCobroByAdmTipoDePago(rubro.getAdmTipoDePago())).thenReturn(Optional.empty());
         when(rubroDeCobroRepositorio.save(rubro)).thenReturn(rubro);
 
         ResponseEntity<Object> resultado = rubroDeCobroServicio.nuevoRubroDeCobro(rubro);

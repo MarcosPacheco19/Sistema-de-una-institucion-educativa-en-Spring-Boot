@@ -5,9 +5,6 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -16,13 +13,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Profesores")
-@PrimaryKeyJoinColumn(referencedColumnName = "pro_usuario")
+@PrimaryKeyJoinColumn(name = "usu_id")
 public class Profesor extends Usuario {
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="pro_id")
-    private Long proId;
     @Column(name="pro_especialidad")
     private String proEspecialidad;
 
@@ -41,21 +34,11 @@ public class Profesor extends Usuario {
     public Profesor(Long usuId, String usuNombre, String usuApellido, String usuCorreo, String usuPassword,
             String usuPerfilAcceso, String usuCedula, Long proId, String proEspecialidad) {
         super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula);
-        this.proId = proId;
         this.proEspecialidad = proEspecialidad;
     }
 
-    public Profesor(Long usuId, Long proId) {
+    public Profesor(Long usuId) {
         super(usuId);
-        this.proId = proId;
-    }
-
-    public Long getProId() {
-        return proId;
-    }
-
-    public void setProId(Long proId) {
-        this.proId = proId;
     }
 
     public String getProEspecialidad() {
@@ -86,7 +69,6 @@ public class Profesor extends Usuario {
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + ((proId == null) ? 0 : proId.hashCode());
         result = prime * result + ((proEspecialidad == null) ? 0 : proEspecialidad.hashCode());
         return result;
     }
@@ -100,11 +82,6 @@ public class Profesor extends Usuario {
         if (getClass() != obj.getClass())
             return false;
         Profesor other = (Profesor) obj;
-        if (proId == null) {
-            if (other.proId != null)
-                return false;
-        } else if (!proId.equals(other.proId))
-            return false;
         if (proEspecialidad == null) {
             if (other.proEspecialidad != null)
                 return false;
@@ -115,7 +92,7 @@ public class Profesor extends Usuario {
 
     @Override
     public String toString() {
-        return "Profesor [proId=" + proId + ", proEspecialidad=" + proEspecialidad + "]";
+        return "Profesor [ proEspecialidad=" + proEspecialidad + "]";
     }
 
 }

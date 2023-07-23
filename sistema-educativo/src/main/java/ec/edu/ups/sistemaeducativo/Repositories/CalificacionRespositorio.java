@@ -9,6 +9,6 @@ import ec.edu.ups.sistemaeducativo.Models.Calificacion;
 @Repository
 public interface CalificacionRespositorio extends JpaRepository<Calificacion, Long>{
     
-    Optional<Calificacion> findCalificacionById(Long idCalificacion);
+    Optional<Calificacion> findCalificacionByCaliId(Long idCalificacion);
 }
 

@@ -20,9 +20,9 @@ public class Carrera {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="car_id")
     private Long carId;
-    @Column(name="car_id")
+    @Column(name="car_nombre")
     private String carNombre;
-    @Column(name="car_id")
+    @Column(name="car_Titulo")
     private String carTitulo;
 
     @OneToMany(cascade = CascadeType.ALL)

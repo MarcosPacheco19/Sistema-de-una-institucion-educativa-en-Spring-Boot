@@ -10,6 +10,6 @@ import ec.edu.ups.sistemaeducativo.Models.Empleado;
 @Repository
 public interface EmpleadoRepositorio extends JpaRepository<Empleado, Long> {
     
-    Optional<Empleado> findEmpleadoByAreaTrabajo(String areaTrabajoEmpleado);
+    Optional<Empleado> findEmpleadoByEmpAreaTrabajo(String areaTrabajoEmpleado);
 }
 

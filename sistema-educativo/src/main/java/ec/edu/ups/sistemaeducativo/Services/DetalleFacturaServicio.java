@@ -30,7 +30,7 @@ public class DetalleFacturaServicio {
     public ResponseEntity<Object> nuevoDetalleFactura(DetalleFactura detalleFactura){
         datos = new HashMap<>();
 
-        Optional<DetalleFactura> respuesta = detalleFacturaRepositorio.findDetallePorDescripcion(detalleFactura.getDetDescripcion());
+        Optional<DetalleFactura> respuesta = detalleFacturaRepositorio.findDetalleFacturaByDetDescripcion(detalleFactura.getDetDescripcion());
 
         if(respuesta.isPresent()){
             datos.put("Error", true);

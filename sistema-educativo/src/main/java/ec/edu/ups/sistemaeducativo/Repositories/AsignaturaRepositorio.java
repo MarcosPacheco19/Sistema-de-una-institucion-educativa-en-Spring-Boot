@@ -10,6 +10,6 @@ import ec.edu.ups.sistemaeducativo.Models.Asignatura;
 @Repository
 public interface AsignaturaRepositorio extends JpaRepository<Asignatura, Long>{
     
-    Optional<Asignatura> findAsignaturaByNombre(String nombreAsignatura);
+    Optional<Asignatura> findAsignaturaByAsigNombre(String nombreAsignatura);
 }
 

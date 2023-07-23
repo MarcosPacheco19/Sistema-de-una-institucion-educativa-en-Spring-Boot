@@ -17,7 +17,7 @@ import ec.edu.ups.sistemaeducativo.Models.RubroDeCobro;
 import ec.edu.ups.sistemaeducativo.Services.RubroDeCobroServicio;
 
 @RestController
-@RequestMapping(name = "rubroCobro")
+@RequestMapping(path = "rubroCobro")
 public class RubroDeCobroControlador {
     private final RubroDeCobroServicio rubroDeCobroServicio;
 

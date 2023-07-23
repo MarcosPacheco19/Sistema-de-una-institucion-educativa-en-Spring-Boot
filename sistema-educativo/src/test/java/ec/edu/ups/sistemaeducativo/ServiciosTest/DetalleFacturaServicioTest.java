@@ -46,7 +46,7 @@ public class DetalleFacturaServicioTest {
         DetalleFactura detalleFactura = new DetalleFactura();
         detalleFactura.setDetDescripcion("Detalle existente");
 
-        when(detalleFacturaRepositorio.findDetallePorDescripcion(detalleFactura.getDetDescripcion())).thenReturn(Optional.of(detalleFactura));
+        when(detalleFacturaRepositorio.findDetalleFacturaByDetDescripcion(detalleFactura.getDetDescripcion())).thenReturn(Optional.of(detalleFactura));
 
         ResponseEntity<Object> resultado = detalleFacturaServicio.nuevoDetalleFactura(detalleFactura);
 
@@ -58,7 +58,7 @@ public class DetalleFacturaServicioTest {
         DetalleFactura detalleFactura = new DetalleFactura();
         detalleFactura.setDetDescripcion("Detalle nuevo");
 
-        when(detalleFacturaRepositorio.findDetallePorDescripcion(detalleFactura.getDetDescripcion())).thenReturn(Optional.empty());
+        when(detalleFacturaRepositorio.findDetalleFacturaByDetDescripcion(detalleFactura.getDetDescripcion())).thenReturn(Optional.empty());
         when(detalleFacturaRepositorio.save(detalleFactura)).thenReturn(detalleFactura);
 
         ResponseEntity<Object> resultado = detalleFacturaServicio.nuevoDetalleFactura(detalleFactura);

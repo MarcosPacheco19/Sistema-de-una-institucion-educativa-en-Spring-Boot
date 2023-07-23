@@ -46,7 +46,7 @@ public class CarreraServicioTest {
         Carrera carrera = new Carrera();
         carrera.setCarNombre("Ingeniería");
 
-        when(carreraRepositorio.findCarreraByNombre(carrera.getCarNombre())).thenReturn(Optional.of(carrera));
+        when(carreraRepositorio.findCarreraByCarNombre(carrera.getCarNombre())).thenReturn(Optional.of(carrera));
 
         ResponseEntity<Object> resultado = carreraServicio.nuevoCarrera(carrera);
 
@@ -58,7 +58,7 @@ public class CarreraServicioTest {
         Carrera carrera = new Carrera();
         carrera.setCarNombre("Ingeniería");
 
-        when(carreraRepositorio.findCarreraByNombre(carrera.getCarNombre())).thenReturn(Optional.empty());
+        when(carreraRepositorio.findCarreraByCarNombre(carrera.getCarNombre())).thenReturn(Optional.empty());
         when(carreraRepositorio.save(carrera)).thenReturn(carrera);
 
         ResponseEntity<Object> resultado = carreraServicio.nuevoCarrera(carrera);

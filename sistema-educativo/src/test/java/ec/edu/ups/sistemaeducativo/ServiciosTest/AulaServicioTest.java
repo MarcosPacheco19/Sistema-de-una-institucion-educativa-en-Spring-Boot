@@ -44,7 +44,7 @@ public class AulaServicioTest {
         Aulas aulas = new Aulas();
         aulas.setAulId(1L);
 
-        when(aulaRepositorio.findAulatebyId(aulas.getAulId())).thenReturn(Optional.of(aulas));
+        when(aulaRepositorio.findAulasByAulId(aulas.getAulId())).thenReturn(Optional.of(aulas));
 
         ResponseEntity<Object> resultado = aulaServicio.nuevaAula(aulas);
 
@@ -56,7 +56,7 @@ public class AulaServicioTest {
         Aulas aulas = new Aulas();
         aulas.setAulId(1L);
 
-        when(aulaRepositorio.findAulatebyId(aulas.getAulId())).thenReturn(Optional.empty());
+        when(aulaRepositorio.findAulasByAulId(aulas.getAulId())).thenReturn(Optional.empty());
         when(aulaRepositorio.save(aulas)).thenReturn(aulas);
 
         ResponseEntity<Object> resultado = aulaServicio.nuevaAula(aulas);

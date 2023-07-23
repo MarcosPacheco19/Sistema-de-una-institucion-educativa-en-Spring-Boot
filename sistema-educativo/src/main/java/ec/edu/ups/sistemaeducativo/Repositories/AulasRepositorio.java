@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface AulasRepositorio extends JpaRepository<Aulas, Long> {
 
-    Optional<Aulas> findAulatebyId(Long aulId);
+    Optional<Aulas> findAulasByAulId(Long aulId);
 
 }
 

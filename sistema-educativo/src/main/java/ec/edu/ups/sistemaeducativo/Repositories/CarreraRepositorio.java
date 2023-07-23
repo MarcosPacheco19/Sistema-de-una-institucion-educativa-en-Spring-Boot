@@ -10,6 +10,6 @@ import ec.edu.ups.sistemaeducativo.Models.Carrera;
 @Repository
 public interface CarreraRepositorio extends JpaRepository<Carrera, Long> {
     
-    Optional<Carrera> findCarreraByNombre(String nombreCarrera);
+    Optional<Carrera> findCarreraByCarNombre(String nombreCarrera);
 }
 

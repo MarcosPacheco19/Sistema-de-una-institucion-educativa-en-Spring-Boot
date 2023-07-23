@@ -46,7 +46,7 @@ public class TituloServicioTest {
         Titulo titulo = new Titulo();
         titulo.setTitnombre("titulo1");
 
-        when(tituloRepositorio.findTituloByNombre(titulo.getTitnombre())).thenReturn(Optional.of(titulo));
+        when(tituloRepositorio.findTituloByTitNombre(titulo.getTitnombre())).thenReturn(Optional.of(titulo));
 
         ResponseEntity<Object> resultado = tituloServicio.nuevoTitulo(titulo);
 
@@ -58,7 +58,7 @@ public class TituloServicioTest {
         Titulo titulo = new Titulo();
         titulo.setTitnombre("titulo1");
 
-        when(tituloRepositorio.findTituloByNombre(titulo.getTitnombre())).thenReturn(Optional.empty());
+        when(tituloRepositorio.findTituloByTitNombre(titulo.getTitnombre())).thenReturn(Optional.empty());
         when(tituloRepositorio.save(titulo)).thenReturn(titulo);
 
         ResponseEntity<Object> resultado = tituloServicio.nuevoTitulo(titulo);

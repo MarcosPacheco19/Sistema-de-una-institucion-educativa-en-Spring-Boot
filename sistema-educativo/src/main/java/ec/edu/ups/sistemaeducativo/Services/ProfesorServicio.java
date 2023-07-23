@@ -30,7 +30,7 @@ public class ProfesorServicio {
     public ResponseEntity<Object> nuevoProfesor (Profesor profesor) {
 		datos = new HashMap<>();
 
-        Optional<Profesor> respuesta = profesorRepositorio.findProfesorByCedula(profesor.getUsuCedula());
+        Optional<Profesor> respuesta = profesorRepositorio.findProfesorByUsuCedula(profesor.getUsuCedula());
         
         if (respuesta.isPresent()) {
 			datos.put("Error", true);
@@ -45,7 +45,7 @@ public class ProfesorServicio {
     public ResponseEntity<Object> actualizarProfesor (Profesor profesor){
         datos = new HashMap<>();
 
-        Optional<Profesor> respuesta = profesorRepositorio.findById(profesor.getProId());
+        Optional<Profesor> respuesta = profesorRepositorio.findById(profesor.getUsuId());
 
         if (respuesta.isEmpty()) {
 			datos.put("Error", true);

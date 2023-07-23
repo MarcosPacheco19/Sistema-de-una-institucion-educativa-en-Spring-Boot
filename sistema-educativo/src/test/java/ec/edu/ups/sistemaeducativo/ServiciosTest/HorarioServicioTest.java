@@ -47,7 +47,7 @@ public class HorarioServicioTest {
         Horario horario = new Horario();
         horario.setHorId(1L);
 
-        when(horarioRepositorio.findHorariobyId(horario.getHorId())).thenReturn(Optional.of(horario));
+        when(horarioRepositorio.findHorarioByHorId(horario.getHorId())).thenReturn(Optional.of(horario));
 
         ResponseEntity<Object> resultado = horarioServicio.nuevoHorario(horario);
 
@@ -59,7 +59,7 @@ public class HorarioServicioTest {
         Horario horario = new Horario();
         horario.setHorId(1L);
 
-        when(horarioRepositorio.findHorariobyId(horario.getHorId())).thenReturn(Optional.empty());
+        when(horarioRepositorio.findHorarioByHorId(horario.getHorId())).thenReturn(Optional.empty());
         when(horarioRepositorio.save(horario)).thenReturn(horario);
 
         ResponseEntity<Object> resultado = horarioServicio.nuevoHorario(horario);

@@ -48,7 +48,7 @@ public class EstudianteServicioTest {
         Estudiante estudiante = new Estudiante();
         estudiante.setUsuCedula("1234567890");
 
-        when(estudianteRepositorio.findEstudiantebyCedula(estudiante.getUsuCedula())).thenReturn(Optional.of(estudiante));
+        when(estudianteRepositorio.findEstudianteByUsuCedula(estudiante.getUsuCedula())).thenReturn(Optional.of(estudiante));
 
         ResponseEntity<Object> resultado = estudianteServicio.nuevoEstudiante(estudiante);
 
@@ -60,7 +60,7 @@ public class EstudianteServicioTest {
         Estudiante estudiante = new Estudiante();
         estudiante.setUsuCedula("1234567890");
 
-        when(estudianteRepositorio.findEstudiantebyCedula(estudiante.getUsuCedula())).thenReturn(Optional.empty());
+        when(estudianteRepositorio.findEstudianteByUsuCedula(estudiante.getUsuCedula())).thenReturn(Optional.empty());
         when(estudianteRepositorio.save(estudiante)).thenReturn(estudiante);
 
         ResponseEntity<Object> resultado = estudianteServicio.nuevoEstudiante(estudiante);

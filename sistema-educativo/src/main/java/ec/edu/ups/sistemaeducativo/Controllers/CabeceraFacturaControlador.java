@@ -17,7 +17,7 @@ import ec.edu.ups.sistemaeducativo.Models.CabeceraFactura;
 import ec.edu.ups.sistemaeducativo.Services.CabeceraFacturaServicio;
 
 @RestController
-@RequestMapping(name = "cabeceraFactura")
+@RequestMapping(path = "cabeceraFactura")
 public class CabeceraFacturaControlador {
     private final CabeceraFacturaServicio cabeceraFacturaServicio;
 

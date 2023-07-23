@@ -30,7 +30,7 @@ public class GrupoAsignaturaServicio {
     public ResponseEntity<Object> nuevoGrupoAsignatura (GrupoAsignatura grupoAsignatura) {
 		datos = new HashMap<>();
 
-        Optional<GrupoAsignatura> respuesta = grupoAsignaturaRepositorio.findGrupoAsignaturaByGrupo(grupoAsignatura.getGrupoAcademino());
+        Optional<GrupoAsignatura> respuesta = grupoAsignaturaRepositorio.findGrupoAsignaturaByGrupoAcademino(grupoAsignatura.getGrupoAcademino());
         
         if (respuesta.isPresent()) {
 			datos.put("Error", true);

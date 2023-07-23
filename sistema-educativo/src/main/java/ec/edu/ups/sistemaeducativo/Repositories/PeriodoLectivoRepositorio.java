@@ -8,6 +8,6 @@ import ec.edu.ups.sistemaeducativo.Models.PeriodoLectivo;
 
 public interface PeriodoLectivoRepositorio extends JpaRepository<PeriodoLectivo, Long> {
 
-    Optional<PeriodoLectivo> findPeridiodoLectivobyId(Long plId);
+    Optional<PeriodoLectivo> findPeridiodoLectivoByPlId(Long plId);
 }
 

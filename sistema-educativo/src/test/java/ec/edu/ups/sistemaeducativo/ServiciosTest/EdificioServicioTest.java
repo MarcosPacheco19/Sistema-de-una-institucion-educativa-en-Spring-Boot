@@ -45,7 +45,7 @@ public class EdificioServicioTest {
         Edificio edificio = new Edificio();
         edificio.setEdiId(1L);
 
-        when(edificioRepositrio.findEdificiobyId(edificio.getEdiId())).thenReturn(Optional.of(edificio));
+        when(edificioRepositrio.findEdificioByEdiId(edificio.getEdiId())).thenReturn(Optional.of(edificio));
 
         ResponseEntity<Object> resultado = edificioServicio.nuevoEdificio(edificio);
 
@@ -57,7 +57,7 @@ public class EdificioServicioTest {
         Edificio edificio = new Edificio();
         edificio.setEdiId(1L);
 
-        when(edificioRepositrio.findEdificiobyId(edificio.getEdiId())).thenReturn(Optional.empty());
+        when(edificioRepositrio.findEdificioByEdiId(edificio.getEdiId())).thenReturn(Optional.empty());
         when(edificioRepositrio.save(edificio)).thenReturn(edificio);
 
         ResponseEntity<Object> resultado = edificioServicio.nuevoEdificio(edificio);

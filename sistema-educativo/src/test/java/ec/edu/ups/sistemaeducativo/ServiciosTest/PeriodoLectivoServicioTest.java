@@ -45,7 +45,7 @@ public class PeriodoLectivoServicioTest {
         PeriodoLectivo periodoLectivo = new PeriodoLectivo();
         periodoLectivo.setPlId(1L);
 
-        when(periodoLectivoRepositorio.findPeridiodoLectivobyId(periodoLectivo.getPlId())).thenReturn(Optional.of(periodoLectivo));
+        when(periodoLectivoRepositorio.findPeridiodoLectivoByPlId(periodoLectivo.getPlId())).thenReturn(Optional.of(periodoLectivo));
 
         ResponseEntity<Object> resultado = periodoLectivoServicio.nuevoPeriodoLectivo(periodoLectivo);
 
@@ -57,7 +57,7 @@ public class PeriodoLectivoServicioTest {
         PeriodoLectivo periodoLectivo = new PeriodoLectivo();
         periodoLectivo.setPlId(1L);
 
-        when(periodoLectivoRepositorio.findPeridiodoLectivobyId(periodoLectivo.getPlId())).thenReturn(Optional.empty());
+        when(periodoLectivoRepositorio.findPeridiodoLectivoByPlId(periodoLectivo.getPlId())).thenReturn(Optional.empty());
         when(periodoLectivoRepositorio.save(periodoLectivo)).thenReturn(periodoLectivo);
 
         ResponseEntity<Object> resultado = periodoLectivoServicio.nuevoPeriodoLectivo(periodoLectivo);

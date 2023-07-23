@@ -17,7 +17,7 @@ import ec.edu.ups.sistemaeducativo.Models.Profesor;
 import ec.edu.ups.sistemaeducativo.Services.ProfesorServicio;
 
 @RestController
-@RequestMapping(name = "profesores")
+@RequestMapping(path = "profesores")
 public class ProfesorControlador {
     private final ProfesorServicio profesorServicio;
 
@@ -27,7 +27,7 @@ public class ProfesorControlador {
     }
 
     @GetMapping(path = "listar")
-    public List<Profesor> getUsuarios(){
+    public List<Profesor> getProfesores(){
         return this.profesorServicio.getProfesores();
     }
 

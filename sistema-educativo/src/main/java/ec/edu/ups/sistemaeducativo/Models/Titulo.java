@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,9 +19,9 @@ public class Titulo {
     private long titId;
 
     @Column(name="tit_nombre")
-    private String titnombre;
+    private String titNombre;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="pro_id")
     private Profesor profesor;
     
@@ -34,7 +34,7 @@ public class Titulo {
 
     public Titulo(long titId, String titnombre) {
         this.titId = titId;
-        this.titnombre = titnombre;
+        this.titNombre = titnombre;
     }
 
     public long getTitId() {
@@ -46,11 +46,11 @@ public class Titulo {
     }
 
     public String getTitnombre() {
-        return titnombre;
+        return titNombre;
     }
 
     public void setTitnombre(String titnombre) {
-        this.titnombre = titnombre;
+        this.titNombre = titnombre;
     }
 
     public Profesor getProfesor() {
@@ -66,7 +66,7 @@ public class Titulo {
         final int prime = 31;
         int result = 1;
         result = prime * result + (int) (titId ^ (titId >>> 32));
-        result = prime * result + ((titnombre == null) ? 0 : titnombre.hashCode());
+        result = prime * result + ((titNombre == null) ? 0 : titNombre.hashCode());
         return result;
     }
 
@@ -81,16 +81,16 @@ public class Titulo {
         Titulo other = (Titulo) obj;
         if (titId != other.titId)
             return false;
-        if (titnombre == null) {
-            if (other.titnombre != null)
+        if (titNombre == null) {
+            if (other.titNombre != null)
                 return false;
-        } else if (!titnombre.equals(other.titnombre))
+        } else if (!titNombre.equals(other.titNombre))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Titulo [titId=" + titId + ", titnombre=" + titnombre + "]";
+        return "Titulo [titId=" + titId + ", titnombre=" + titNombre + "]";
     }
 }

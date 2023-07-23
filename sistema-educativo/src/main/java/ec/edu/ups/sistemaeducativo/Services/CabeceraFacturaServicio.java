@@ -30,7 +30,7 @@ public class CabeceraFacturaServicio {
     public ResponseEntity<Object> nuevaCabecera (CabeceraFactura cabeceraFactura){
         datos = new HashMap<>();
 
-        Optional<CabeceraFactura> respuesta = cabeceraFacturaRepositorio.findCabeceraPorCorreo(cabeceraFactura.getCabCorreo());
+        Optional<CabeceraFactura> respuesta = cabeceraFacturaRepositorio.findCabeceraFacturaByCabCorreo(cabeceraFactura.getCabCorreo());
 
         if (respuesta.isPresent()) {
             datos.put("Error", true);

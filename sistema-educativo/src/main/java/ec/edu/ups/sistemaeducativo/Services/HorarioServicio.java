@@ -7,11 +7,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import ec.edu.ups.sistemaeducativo.Models.Horario;
 
 import ec.edu.ups.sistemaeducativo.Repositories.HorarioRepositorio;
 
+@Service
 public class HorarioServicio {
 
     @Autowired
@@ -31,7 +33,7 @@ public class HorarioServicio {
         datos = new HashMap<>();
 
         Optional<Horario> respuesta = horarioRepositorio
-                .findHorariobyId(horario.getHorId());
+                .findHorarioByHorId(horario.getHorId());
 
         if (respuesta.isPresent()) {
             datos.put("Error", true);

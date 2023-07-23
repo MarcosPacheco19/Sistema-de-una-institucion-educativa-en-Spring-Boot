@@ -10,6 +10,6 @@ import ec.edu.ups.sistemaeducativo.Models.Estudiante;
 @Repository
 public interface EstudianteRepositorio extends JpaRepository<Estudiante, Long> {
     
-    Optional<Estudiante> findEstudiantebyCedula(String Cedula);
+    Optional<Estudiante> findEstudianteByUsuCedula(String Cedula);
 }
 

@@ -10,6 +10,6 @@ import ec.edu.ups.sistemaeducativo.Models.DetalleFactura;
 @Repository
 public interface DetalleFacturaRepositorio extends JpaRepository<DetalleFactura, Long>{
     
-    Optional<DetalleFactura> findDetallePorDescripcion(String detDescripcion);
+    Optional<DetalleFactura> findDetalleFacturaByDetDescripcion(String detDescripcion);
 }
 

@@ -10,6 +10,6 @@ import ec.edu.ups.sistemaeducativo.Models.Profesor;
 @Repository
 public interface ProfesorRepositorio extends JpaRepository<Profesor, Long>{
     
-    Optional<Profesor> findProfesorByCedula(String cedulaProfesor);
+    Optional<Profesor> findProfesorByUsuCedula(String cedulaProfesor);
 }
 

@@ -8,6 +8,6 @@ import ec.edu.ups.sistemaeducativo.Models.Edificio;
 
 public interface EdificioRepositrio extends JpaRepository<Edificio, Long> {
 
-    Optional<Edificio> findEdificiobyId(Long plId);
+    Optional<Edificio> findEdificioByEdiId(Long plId);
 }
 

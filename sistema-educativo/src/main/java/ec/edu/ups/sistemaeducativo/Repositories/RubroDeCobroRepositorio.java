@@ -10,6 +10,6 @@ import ec.edu.ups.sistemaeducativo.Models.RubroDeCobro;
 @Repository
 public interface RubroDeCobroRepositorio extends JpaRepository<RubroDeCobro, Long>{
     
-    Optional<RubroDeCobro> findRubroPorTipoDePago(String admTipoDePago);
+    Optional<RubroDeCobro> findRubroDeCobroByAdmTipoDePago(String admTipoDePago);
 }
 

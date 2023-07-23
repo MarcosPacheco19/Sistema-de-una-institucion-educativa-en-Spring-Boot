@@ -10,6 +10,6 @@ import ec.edu.ups.sistemaeducativo.Models.CabeceraFactura;
 @Repository
 public interface CabeceraFacturaRepositorio extends JpaRepository<CabeceraFactura, Long>{
     
-    Optional<CabeceraFactura> findCabeceraPorCorreo(String correo);
+    Optional<CabeceraFactura> findCabeceraFacturaByCabCorreo(String correo);
 }
 

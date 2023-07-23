@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 //import ec.edu.ups.sistemaeducativo.Services.DetalleFacturaServicio;
 
 @RestController
-@RequestMapping(name = "detalleFactura")
+@RequestMapping(path = "detalleFactura")
 public class DetalleFacturaControlador {
     
     //private final DetalleFacturaServicio detalleFacturaServicio;

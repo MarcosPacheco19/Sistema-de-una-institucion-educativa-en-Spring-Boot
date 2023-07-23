@@ -8,7 +8,7 @@ import ec.edu.ups.sistemaeducativo.Models.Horario;
 
 public interface HorarioRepositorio extends JpaRepository<Horario, Long> {
 
-    Optional<Horario> findHorariobyId(Long horId);
+    Optional<Horario> findHorarioByHorId(Long horId);
 
 }
 

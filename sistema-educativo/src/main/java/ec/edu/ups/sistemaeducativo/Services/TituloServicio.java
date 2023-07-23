@@ -30,7 +30,7 @@ public class TituloServicio {
     public ResponseEntity<Object> nuevoTitulo (Titulo titulo) {
 		datos = new HashMap<>();
 
-        Optional<Titulo> respuesta = tituloRepositorio.findTituloByNombre(titulo.getTitnombre());
+        Optional<Titulo> respuesta = tituloRepositorio.findTituloByTitNombre(titulo.getTitnombre());
         
         if (respuesta.isPresent()) {
 			datos.put("Error", true);

@@ -30,7 +30,7 @@ public class CarreraServicio {
     public ResponseEntity<Object> nuevoCarrera (Carrera Carrera) {
 		datos = new HashMap<>();
 
-        Optional<Carrera> respuesta = carreraRepositorio.findCarreraByNombre(Carrera.getCarNombre());
+        Optional<Carrera> respuesta = carreraRepositorio.findCarreraByCarNombre(Carrera.getCarNombre());
         
         if (respuesta.isPresent()) {
 			datos.put("Error", true);

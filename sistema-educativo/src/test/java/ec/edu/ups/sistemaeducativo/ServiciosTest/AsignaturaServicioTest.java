@@ -44,7 +44,7 @@ public class AsignaturaServicioTest {
         Asignatura asignatura = new Asignatura();
         asignatura.setAsigNombre("Matemáticas");
 
-        when(asignaturaRepositorio.findAsignaturaByNombre(asignatura.getAsigNombre())).thenReturn(Optional.of(asignatura));
+        when(asignaturaRepositorio.findAsignaturaByAsigNombre(asignatura.getAsigNombre())).thenReturn(Optional.of(asignatura));
 
         ResponseEntity<Object> resultado = asignaturaServicio.nuevoAsignatura(asignatura);
 
@@ -56,7 +56,7 @@ public class AsignaturaServicioTest {
         Asignatura asignatura = new Asignatura();
         asignatura.setAsigNombre("Matemáticas");
 
-        when(asignaturaRepositorio.findAsignaturaByNombre(asignatura.getAsigNombre())).thenReturn(Optional.empty());
+        when(asignaturaRepositorio.findAsignaturaByAsigNombre(asignatura.getAsigNombre())).thenReturn(Optional.empty());
         when(asignaturaRepositorio.save(asignatura)).thenReturn(asignatura);
 
         ResponseEntity<Object> resultado = asignaturaServicio.nuevoAsignatura(asignatura);

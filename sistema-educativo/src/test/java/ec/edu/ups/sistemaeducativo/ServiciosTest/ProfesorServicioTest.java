@@ -45,7 +45,7 @@ public class ProfesorServicioTest {
         Profesor profesor = new Profesor();
         profesor.setUsuCedula("1234567890");
 
-        when(profesorRepositorio.findProfesorByCedula(profesor.getUsuCedula())).thenReturn(Optional.of(profesor));
+        when(profesorRepositorio.findProfesorByUsuCedula(profesor.getUsuCedula())).thenReturn(Optional.of(profesor));
 
         ResponseEntity<Object> resultado = profesorServicio.nuevoProfesor(profesor);
 
@@ -57,7 +57,7 @@ public class ProfesorServicioTest {
         Profesor profesor = new Profesor();
         profesor.setUsuCedula("1234567890");
 
-        when(profesorRepositorio.findProfesorByCedula(profesor.getUsuCedula())).thenReturn(Optional.empty());
+        when(profesorRepositorio.findProfesorByUsuCedula(profesor.getUsuCedula())).thenReturn(Optional.empty());
         when(profesorRepositorio.save(profesor)).thenReturn(profesor);
 
         ResponseEntity<Object> resultado = profesorServicio.nuevoProfesor(profesor);
@@ -68,9 +68,9 @@ public class ProfesorServicioTest {
     @Test
     public void testActualizarProfesorNoExistente() {
         Profesor profesor = new Profesor();
-        profesor.setProId(1L);
+        profesor.setUsuId(1L);
 
-        when(profesorRepositorio.findById(profesor.getProId())).thenReturn(Optional.empty());
+        when(profesorRepositorio.findById(profesor.getUsuId())).thenReturn(Optional.empty());
 
         ResponseEntity<Object> resultado = profesorServicio.actualizarProfesor(profesor);
 
@@ -80,9 +80,9 @@ public class ProfesorServicioTest {
     @Test
     public void testActualizarProfesorExistente() {
         Profesor profesor = new Profesor();
-        profesor.setProId(1L);
+        profesor.setUsuId(1L);
 
-        when(profesorRepositorio.findById(profesor.getProId())).thenReturn(Optional.of(profesor));
+        when(profesorRepositorio.findById(profesor.getUsuId())).thenReturn(Optional.of(profesor));
         when(profesorRepositorio.save(profesor)).thenReturn(profesor);
 
         ResponseEntity<Object> resultado = profesorServicio.actualizarProfesor(profesor);
@@ -128,7 +128,7 @@ public class ProfesorServicioTest {
     public void testBuscarProfesorExistente() {
         Long id = 1L;
         Profesor profesor = new Profesor();
-        profesor.setProId(id);
+        profesor.setUsuId(id);
 
         when(profesorRepositorio.findById(id)).thenReturn(Optional.of(profesor));
 
