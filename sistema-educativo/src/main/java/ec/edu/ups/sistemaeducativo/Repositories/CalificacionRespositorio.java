@@ -11,3 +11,4 @@ public interface CalificacionRespositorio extends JpaRepository<Calificacion, Lo
     
     Optional<Calificacion> findCalificacionById(Long idCalificacion);
 }
+

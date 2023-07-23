@@ -12,3 +12,4 @@ public interface EmpleadoRepositorio extends JpaRepository<Empleado, Long> {
     
     Optional<Empleado> findEmpleadoByAreaTrabajo(String areaTrabajoEmpleado);
 }
+

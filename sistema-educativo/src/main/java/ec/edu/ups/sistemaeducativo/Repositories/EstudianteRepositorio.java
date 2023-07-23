@@ -12,3 +12,4 @@ public interface EstudianteRepositorio extends JpaRepository<Estudiante, Long> {
     
     Optional<Estudiante> findEstudiantebyCedula(String Cedula);
 }
+

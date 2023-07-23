@@ -10,3 +10,4 @@ public interface CarreraEstudianteRepositorio extends JpaRepository<CarreraEstud
     
     Optional<CarreraEstudiante> findByCarEstId(Long carEstId);
 }
+

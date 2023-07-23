@@ -10,3 +10,4 @@ public interface PeriodoLectivoRepositorio extends JpaRepository<PeriodoLectivo,
 
     Optional<PeriodoLectivo> findPeridiodoLectivobyId(Long plId);
 }
+

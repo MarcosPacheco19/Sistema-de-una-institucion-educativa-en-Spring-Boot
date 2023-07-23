@@ -12,3 +12,4 @@ public interface DetalleMatriculaRepositorio extends JpaRepository<DetalleMatric
     
         Optional<DetalleMatricula> findDetalleMatriculaByTipoMatricula(String matTipoMatricula);
 }
+

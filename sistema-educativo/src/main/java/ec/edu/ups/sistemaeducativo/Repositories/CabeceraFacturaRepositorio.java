@@ -12,3 +12,4 @@ public interface CabeceraFacturaRepositorio extends JpaRepository<CabeceraFactur
     
     Optional<CabeceraFactura> findCabeceraPorCorreo(String correo);
 }
+

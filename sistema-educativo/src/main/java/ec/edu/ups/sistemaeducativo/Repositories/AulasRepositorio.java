@@ -13,3 +13,4 @@ public interface AulasRepositorio extends JpaRepository<Aulas, Long> {
     Optional<Aulas> findAulatebyId(Long aulId);
 
 }
+

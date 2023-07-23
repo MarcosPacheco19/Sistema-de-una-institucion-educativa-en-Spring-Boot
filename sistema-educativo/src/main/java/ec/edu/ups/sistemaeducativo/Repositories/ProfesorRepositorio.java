@@ -12,3 +12,4 @@ public interface ProfesorRepositorio extends JpaRepository<Profesor, Long>{
     
     Optional<Profesor> findProfesorByCedula(String cedulaProfesor);
 }
+

@@ -12,3 +12,4 @@ public interface DetalleFacturaRepositorio extends JpaRepository<DetalleFactura,
     
     Optional<DetalleFactura> findDetallePorDescripcion(String detDescripcion);
 }
+

@@ -12,3 +12,4 @@ public interface AsignaturaRepositorio extends JpaRepository<Asignatura, Long>{
     
     Optional<Asignatura> findAsignaturaByNombre(String nombreAsignatura);
 }
+

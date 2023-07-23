@@ -10,3 +10,4 @@ public interface EdificioRepositrio extends JpaRepository<Edificio, Long> {
 
     Optional<Edificio> findEdificiobyId(Long plId);
 }
+

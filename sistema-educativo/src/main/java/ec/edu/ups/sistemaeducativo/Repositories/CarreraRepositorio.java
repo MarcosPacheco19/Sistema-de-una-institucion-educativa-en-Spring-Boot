@@ -12,3 +12,4 @@ public interface CarreraRepositorio extends JpaRepository<Carrera, Long> {
     
     Optional<Carrera> findCarreraByNombre(String nombreCarrera);
 }
+

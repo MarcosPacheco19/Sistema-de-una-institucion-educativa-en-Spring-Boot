@@ -12,3 +12,4 @@ public interface RubroDeCobroRepositorio extends JpaRepository<RubroDeCobro, Lon
     
     Optional<RubroDeCobro> findRubroPorTipoDePago(String admTipoDePago);
 }
+

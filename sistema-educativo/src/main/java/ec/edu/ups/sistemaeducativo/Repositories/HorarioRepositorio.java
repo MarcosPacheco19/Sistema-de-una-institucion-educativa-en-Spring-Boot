@@ -11,3 +11,4 @@ public interface HorarioRepositorio extends JpaRepository<Horario, Long> {
     Optional<Horario> findHorariobyId(Long horId);
 
 }
+
