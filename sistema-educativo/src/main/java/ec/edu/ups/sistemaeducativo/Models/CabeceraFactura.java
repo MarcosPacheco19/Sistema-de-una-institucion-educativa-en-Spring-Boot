@@ -56,6 +56,33 @@ public class CabeceraFactura {
     @JoinColumn(name="est_id")
     private Empleado empleado;
 
+    public CabeceraFactura(Long cabId, String cabCedula, String cabNombre, String cabApellido, Date cabFecha,
+            String cabTelefono, String cabDireccion, String cabCorreo, String cabCiudad, double cabSubtotal,
+            double cabIva, double cabTotal, Empleado empleado) {
+        this.cabId = cabId;
+        this.cabCedula = cabCedula;
+        this.cabNombre = cabNombre;
+        this.cabApellido = cabApellido;
+        this.cabFecha = cabFecha;
+        this.cabTelefono = cabTelefono;
+        this.cabDireccion = cabDireccion;
+        this.cabCorreo = cabCorreo;
+        this.cabCiudad = cabCiudad;
+        this.cabSubtotal = cabSubtotal;
+        this.cabIva = cabIva;
+        this.cabTotal = cabTotal;
+        this.empleado = empleado;
+    }
+
+
+    public CabeceraFactura(Long cabId) {
+        this.cabId = cabId;
+    }
+
+    public CabeceraFactura() {
+    }
+
+
     public Long getCabId(){
         return cabId;
     }

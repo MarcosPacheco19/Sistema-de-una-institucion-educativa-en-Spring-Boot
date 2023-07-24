@@ -21,7 +21,20 @@ public class RubroDeCobro {
 
     @Column(name="adm_areaDeTrabajo")
     public String admAreaDeTrabajo;
+
+    public RubroDeCobro() {
+    }
     
+    public RubroDeCobro(long admId, String admTipoDePago, String admAreaDeTrabajo) {
+        this.admId = admId;
+        this.admTipoDePago = admTipoDePago;
+        this.admAreaDeTrabajo = admAreaDeTrabajo;
+    }
+
+    public RubroDeCobro(long admId) {
+        this.admId = admId;
+    }
+
     public long getAdmId() {
         return admId;
     }
