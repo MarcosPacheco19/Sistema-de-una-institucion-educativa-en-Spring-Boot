@@ -10,29 +10,33 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Matriculas")
+@Table(name = "Matriculas")
 public class Matricula {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="mat_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "mat_id")
     private long mat_id;
-    @Column(name="mat_tipo")
+    @Column(name = "mat_tipo")
     private String mat_tipo;
-    @Column(name="mat_fecha")
+    @Column(name = "mat_fecha")
     private String mat_fecha;
 
+    @Column(name = "mat_eliminado")
+    private boolean matEliminado;
+
     @OneToOne
-    @JoinColumn(name="est_id")
+    @JoinColumn(name = "est_id")
     private Estudiante estudiante;
 
     public Matricula() {
     }
 
-    public Matricula(long mat_id, String mat_tipo, String mat_fecha, Estudiante estudiante) {
+    public Matricula(long mat_id, String mat_tipo, String mat_fecha, boolean matEliminado, Estudiante estudiante) {
         this.mat_id = mat_id;
         this.mat_tipo = mat_tipo;
         this.mat_fecha = mat_fecha;
+        this.matEliminado = matEliminado;
         this.estudiante = estudiante;
     }
 
@@ -72,6 +76,14 @@ public class Matricula {
         this.estudiante = estudiante;
     }
 
+    public boolean isMatEliminado() {
+        return matEliminado;
+    }
+
+    public void setMatEliminado(boolean matEliminado) {
+        this.matEliminado = matEliminado;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -79,6 +91,7 @@ public class Matricula {
         result = prime * result + (int) (mat_id ^ (mat_id >>> 32));
         result = prime * result + ((mat_tipo == null) ? 0 : mat_tipo.hashCode());
         result = prime * result + ((mat_fecha == null) ? 0 : mat_fecha.hashCode());
+        result = prime * result + (matEliminado ? 1231 : 1237);
         result = prime * result + ((estudiante == null) ? 0 : estudiante.hashCode());
         return result;
     }
@@ -104,6 +117,8 @@ public class Matricula {
                 return false;
         } else if (!mat_fecha.equals(other.mat_fecha))
             return false;
+        if (matEliminado != other.matEliminado)
+            return false;
         if (estudiante == null) {
             if (other.estudiante != null)
                 return false;
@@ -114,7 +129,8 @@ public class Matricula {
 
     @Override
     public String toString() {
-        return "Matricula [mat_id=" + mat_id + ", mat_tipo=" + mat_tipo + ", mat_fecha=" + mat_fecha + ", estudiante="
-                + estudiante + "]";
+        return "Matricula [mat_id=" + mat_id + ", mat_tipo=" + mat_tipo + ", mat_fecha=" + mat_fecha + ", matEliminado="
+                + matEliminado + ", estudiante=" + estudiante + "]";
     }
+
 }

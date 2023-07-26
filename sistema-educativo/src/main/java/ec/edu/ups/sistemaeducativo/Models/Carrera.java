@@ -25,16 +25,20 @@ public class Carrera {
     @Column(name="car_Titulo")
     private String carTitulo;
 
+    @Column(name = "car_eliminado")
+    private boolean carEliminado;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "pro_id")
     private List<Profesor> profesores;
 
-    public Carrera(Long carId, String carNombre, String carTitulo) {
+    public Carrera(Long carId, String carNombre, String carTitulo, boolean carEliminado) {
         this.carId = carId;
         this.carNombre = carNombre;
         this.carTitulo = carTitulo;
+        this.carEliminado = carEliminado;
     }
-    
+
     public Carrera() {
     }
 
@@ -75,6 +79,14 @@ public class Carrera {
         this.profesores = profesores;
     }
     
+    public boolean isCarEliminado() {
+        return carEliminado;
+    }
+
+    public void setCarEliminado(boolean carEliminado) {
+        this.carEliminado = carEliminado;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

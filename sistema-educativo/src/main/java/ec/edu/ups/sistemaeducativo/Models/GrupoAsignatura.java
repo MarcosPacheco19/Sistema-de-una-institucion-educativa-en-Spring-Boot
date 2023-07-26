@@ -17,10 +17,14 @@ public class GrupoAsignatura {
     private Long grpId;
     @Column(name="grp_grupo")
     private String grupoAcademino;
+
+    @Column(name = "grp_eliminado")
+    private boolean grpEliminado;
     
-    public GrupoAsignatura(Long grpId, String grupoAcademino) {
+    public GrupoAsignatura(Long grpId, String grupoAcademino, boolean grpEliminado) {
         this.grpId = grpId;
         this.grupoAcademino = grupoAcademino;
+        this.grpEliminado = grpEliminado;
     }
 
     public GrupoAsignatura() {
@@ -80,5 +84,13 @@ public class GrupoAsignatura {
     @Override
     public String toString() {
         return "GrupoAsignatura [grpId=" + grpId + ", grupoAcademino=" + grupoAcademino + "]";
+    }
+
+    public boolean isGrpEliminado() {
+        return grpEliminado;
+    }
+
+    public void setGrpEliminado(boolean grpEliminado) {
+        this.grpEliminado = grpEliminado;
     }
 }

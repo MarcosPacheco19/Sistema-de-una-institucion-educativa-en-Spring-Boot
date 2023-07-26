@@ -19,14 +19,18 @@ public class DetalleMatricula {
     private String tipoMatricula;
     @Column(name="det_mat_modalidad")
     private String modalidad;
+
+    @Column(name = "det_mat_eliminado")
+    private boolean detMatEliminado;
     
     public DetalleMatricula() {
     }
 
-    public DetalleMatricula(Long detMatId, String tipoMatricula, String modalidad) {
+    public DetalleMatricula(Long detMatId, String tipoMatricula, String modalidad, boolean detMatEliminado) {
         this.detMatId = detMatId;
         this.tipoMatricula = tipoMatricula;
         this.modalidad = modalidad;
+        this.detMatEliminado = detMatEliminado;
     }
 
     public DetalleMatricula(Long detMatId) {
@@ -55,6 +59,14 @@ public class DetalleMatricula {
 
     public void setModalidad(String modalidad) {
         this.modalidad = modalidad;
+    }
+
+    public boolean isDetMatEliminado() {
+        return detMatEliminado;
+    }
+
+    public void setDetMatEliminado(boolean detMatEliminado) {
+        this.detMatEliminado = detMatEliminado;
     }
 
     @Override

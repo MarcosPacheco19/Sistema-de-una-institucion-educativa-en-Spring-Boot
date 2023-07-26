@@ -8,26 +8,30 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name="Calificaciones")
+@Table(name = "Calificaciones")
 public class Calificacion {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="cali_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cali_id")
     private Long caliId;
-    @Column(name="cali_nota")
+    @Column(name = "cali_nota")
     private int nota;
-    @Column(name="cali_comentario")
+    @Column(name = "cali_comentario")
     private String comentario;
-    @Column(name="cali_fecha_calificacion")
+    @Column(name = "cali_fecha_calificacion")
     private String fechaCalificacion;
-   
-   
-    public Calificacion(Long caliId, int nota, String comentario, String fechaCalificacion) {
+
+    @Column(name = "cali_eliminado")
+    private boolean caliEliminado;
+
+    
+    public Calificacion(Long caliId, int nota, String comentario, String fechaCalificacion, boolean caliEliminado) {
         this.caliId = caliId;
         this.nota = nota;
         this.comentario = comentario;
         this.fechaCalificacion = fechaCalificacion;
+        this.caliEliminado = caliEliminado;
     }
 
     public Calificacion() {
@@ -41,42 +45,42 @@ public class Calificacion {
         return caliId;
     }
 
-
     public void setCaliId(Long caliId) {
         this.caliId = caliId;
     }
-
 
     public int getNota() {
         return nota;
     }
 
-
     public void setNota(int nota) {
         this.nota = nota;
     }
-
 
     public String getComentario() {
         return comentario;
     }
 
-
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-
 
     public String getFechaCalificacion() {
         return fechaCalificacion;
     }
 
-
     public void setFechaCalificacion(String fechaCalificacion) {
         this.fechaCalificacion = fechaCalificacion;
     }
 
-    
+    public boolean isCaliEliminado() {
+        return caliEliminado;
+    }
+
+    public void setCaliEliminado(boolean caliEliminado) {
+        this.caliEliminado = caliEliminado;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -87,7 +91,6 @@ public class Calificacion {
         result = prime * result + ((fechaCalificacion == null) ? 0 : fechaCalificacion.hashCode());
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj) {

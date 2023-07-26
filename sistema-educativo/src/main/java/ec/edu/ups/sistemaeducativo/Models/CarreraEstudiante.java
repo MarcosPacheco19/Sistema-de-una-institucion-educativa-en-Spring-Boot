@@ -18,9 +18,13 @@ public class CarreraEstudiante {
     @Column(name="car_est_fecha_inscripcion")
     private String carEstFechaInscripcion;
 
-    public CarreraEstudiante(Long carEstId, String carEstFechaInscripcion) {
+    @Column(name = "car_est_eliminado")
+    private boolean carEstEliminado;
+
+    public CarreraEstudiante(Long carEstId, String carEstFechaInscripcion, boolean carEstEliminado) {
         this.carEstId = carEstId;
         this.carEstFechaInscripcion = carEstFechaInscripcion;
+        this.carEstEliminado = carEstEliminado;
     }
 
     public CarreraEstudiante() {

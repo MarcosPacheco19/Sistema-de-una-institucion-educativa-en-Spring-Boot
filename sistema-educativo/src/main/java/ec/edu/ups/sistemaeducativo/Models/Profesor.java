@@ -32,8 +32,8 @@ public class Profesor extends Usuario {
     }
 
     public Profesor(Long usuId, String usuNombre, String usuApellido, String usuCorreo, String usuPassword,
-            String usuPerfilAcceso, String usuCedula, Long proId, String proEspecialidad) {
-        super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula);
+            String usuPerfilAcceso, String usuCedula, boolean usuEliminado, String proEspecialidad) {
+        super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula, usuEliminado);
         this.proEspecialidad = proEspecialidad;
     }
 

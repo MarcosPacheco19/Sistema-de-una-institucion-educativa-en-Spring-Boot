@@ -25,11 +25,16 @@ public class DetalleFactura {
     @Column(name = "det_total")
     private double detTotal;
 
-    public DetalleFactura(long detId, String detDescripcion, double detSubtotal, double detTotal) {
+    @Column(name = "det_eliminado")
+    private boolean detEliminado;
+
+    public DetalleFactura(long detId, String detDescripcion, double detSubtotal, double detTotal,
+            boolean detEliminado) {
         this.detId = detId;
         this.detDescripcion = detDescripcion;
         this.detSubtotal = detSubtotal;
         this.detTotal = detTotal;
+        this.detEliminado = detEliminado;
     }
 
     public DetalleFactura() {

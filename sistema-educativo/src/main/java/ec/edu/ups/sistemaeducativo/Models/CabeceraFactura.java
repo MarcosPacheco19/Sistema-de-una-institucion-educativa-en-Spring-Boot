@@ -52,13 +52,16 @@ public class CabeceraFactura {
     @Column(name="cab_total")
     private double cabTotal;
 
+    @Column(name = "cab_eliminado")
+    private boolean cabEliminado;
+
     @OneToOne
     @JoinColumn(name="est_id")
     private Empleado empleado;
 
     public CabeceraFactura(Long cabId, String cabCedula, String cabNombre, String cabApellido, Date cabFecha,
             String cabTelefono, String cabDireccion, String cabCorreo, String cabCiudad, double cabSubtotal,
-            double cabIva, double cabTotal, Empleado empleado) {
+            double cabIva, double cabTotal, boolean cabEliminado, Empleado empleado) {
         this.cabId = cabId;
         this.cabCedula = cabCedula;
         this.cabNombre = cabNombre;
@@ -71,9 +74,9 @@ public class CabeceraFactura {
         this.cabSubtotal = cabSubtotal;
         this.cabIva = cabIva;
         this.cabTotal = cabTotal;
+        this.cabEliminado = cabEliminado;
         this.empleado = empleado;
     }
-
 
     public CabeceraFactura(Long cabId) {
         this.cabId = cabId;

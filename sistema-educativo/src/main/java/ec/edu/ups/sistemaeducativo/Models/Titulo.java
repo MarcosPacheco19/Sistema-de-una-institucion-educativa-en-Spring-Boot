@@ -21,6 +21,9 @@ public class Titulo {
     @Column(name="tit_nombre")
     private String titNombre;
 
+    @Column(name="tit_eliminado")
+    private boolean titEliminado;
+
     @ManyToOne
     @JoinColumn(name="pro_id")
     private Profesor profesor;
@@ -28,13 +31,14 @@ public class Titulo {
     public Titulo() {
     }
 
-    public Titulo(Long usuId, long titId) {
+    public Titulo(long titId) {
         this.titId = titId;
     }
 
-    public Titulo(long titId, String titnombre) {
+    public Titulo(long titId, String titNombre, boolean titEliminado) {
         this.titId = titId;
-        this.titNombre = titnombre;
+        this.titNombre = titNombre;
+        this.titEliminado = titEliminado;
     }
 
     public long getTitId() {
@@ -61,12 +65,30 @@ public class Titulo {
         this.profesor = profesor;
     }
 
+    public String getTitNombre() {
+        return titNombre;
+    }
+
+    public void setTitNombre(String titNombre) {
+        this.titNombre = titNombre;
+    }
+
+    public boolean isTitEliminado() {
+        return titEliminado;
+    }
+
+    public void setTitEliminado(boolean titEliminado) {
+        this.titEliminado = titEliminado;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + (int) (titId ^ (titId >>> 32));
         result = prime * result + ((titNombre == null) ? 0 : titNombre.hashCode());
+        result = prime * result + (titEliminado ? 1231 : 1237);
+        result = prime * result + ((profesor == null) ? 0 : profesor.hashCode());
         return result;
     }
 
@@ -86,11 +108,19 @@ public class Titulo {
                 return false;
         } else if (!titNombre.equals(other.titNombre))
             return false;
+        if (titEliminado != other.titEliminado)
+            return false;
+        if (profesor == null) {
+            if (other.profesor != null)
+                return false;
+        } else if (!profesor.equals(other.profesor))
+            return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Titulo [titId=" + titId + ", titnombre=" + titNombre + "]";
+        return "Titulo [titId=" + titId + ", titNombre=" + titNombre + ", titEliminado=" + titEliminado + ", profesor="
+                + profesor + "]";
     }
 }

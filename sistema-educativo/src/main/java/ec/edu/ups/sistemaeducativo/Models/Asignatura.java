@@ -20,11 +20,14 @@ public class Asignatura {
     @Column(name="asig_creditos")
     private int asigCreditos;
 
+    @Column(name = "asig_eliminado")
+    private boolean asigEliminado;
 
-    public Asignatura(Long asigId, String asigNombre, int asigCreditos) {
+    public Asignatura(Long asigId, String asigNombre, int asigCreditos, boolean asigEliminado) {
         this.asigId = asigId;
         this.asigNombre = asigNombre;
         this.asigCreditos = asigCreditos;
+        this.asigEliminado = asigEliminado;
     }
 
     public Asignatura() {
@@ -60,6 +63,13 @@ public class Asignatura {
         this.asigCreditos = asigCreditos;
     }
 
+    public boolean isAsigEliminado() {
+        return asigEliminado;
+    }
+
+    public void setAsigEliminado(boolean asigEliminado) {
+        this.asigEliminado = asigEliminado;
+    }
 
     @Override
     public int hashCode() {

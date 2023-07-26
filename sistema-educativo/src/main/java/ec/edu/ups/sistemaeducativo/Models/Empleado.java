@@ -27,12 +27,15 @@ public class Empleado extends Usuario {
     public Empleado() {
     }
 
+    
+
     public Empleado(Long usuId, String usuNombre, String usuApellido, String usuCorreo, String usuPassword,
-            String usuPerfilAcceso, String usuCedula, Long empId, String empCargo, String empAreaTrabajo) {
-        super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula);
+            String usuPerfilAcceso, String usuCedula, boolean usuEliminado, String empCargo, String empAreaTrabajo) {
+        super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula, usuEliminado);
         this.empCargo = empCargo;
         this.empAreaTrabajo = empAreaTrabajo;
     }
+
 
     public String getEmpCargo() {
         return empCargo;

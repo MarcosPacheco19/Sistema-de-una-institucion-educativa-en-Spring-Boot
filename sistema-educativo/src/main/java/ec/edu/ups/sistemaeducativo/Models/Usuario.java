@@ -30,12 +30,14 @@ public class Usuario {
     private String usuPerfilAcceso;
     @Column(name="usu_cedula")
     private String usuCedula;
+    @Column(name="usu_eliminado")
+    private boolean usuEliminado;
     
     public Usuario() {
     }
 
     public Usuario(Long usuId, String usuNombre, String usuApellido, String usuCorreo, String usuPassword,
-            String usuPerfilAcceso, String usuCedula) {
+            String usuPerfilAcceso, String usuCedula, boolean usuEliminado) {
         this.usuId = usuId;
         this.usuNombre = usuNombre;
         this.usuApellido = usuApellido;
@@ -43,6 +45,7 @@ public class Usuario {
         this.usuPassword = usuPassword;
         this.usuPerfilAcceso = usuPerfilAcceso;
         this.usuCedula = usuCedula;
+        this.usuEliminado = usuEliminado;
     }
 
     public Usuario(Long usuId) {
@@ -103,6 +106,14 @@ public class Usuario {
 
     public void setUsuCedula(String usuCedula) {
         this.usuCedula = usuCedula;
+    }
+
+    public boolean isUsuEliminado() {
+        return usuEliminado;
+    }
+
+    public void setUsuEliminado(boolean usuEliminado) {
+        this.usuEliminado = usuEliminado;
     }
 
     @Override

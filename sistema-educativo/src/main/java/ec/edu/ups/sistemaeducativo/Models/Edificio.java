@@ -24,6 +24,10 @@ public class Edificio {
     private Long ediId;
     @Column(name = "edi_nombre")
     private String ediNombre;
+
+    @Column(name = "edi_eliminado")
+    private boolean ediEliminado;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "aul_id")
     private List<Aulas> aulas;
@@ -32,10 +36,10 @@ public class Edificio {
 
     }
 
-    public Edificio(Long ediId, String ediNombre, List<Aulas> aulas) {
+    public Edificio(Long ediId, String ediNombre, boolean ediEliminado) {
         this.ediId = ediId;
         this.ediNombre = ediNombre;
-        this.aulas = aulas;
+        this.ediEliminado = ediEliminado;
     }
 
     public Edificio(Long ediId, String ediNombre) {
@@ -70,6 +74,14 @@ public class Edificio {
 
     public void setAulas(List<Aulas> aulas) {
         this.aulas = aulas;
+    }
+
+    public boolean isEdiEliminado() {
+        return ediEliminado;
+    }
+
+    public void setEdiEliminado(boolean ediEliminado) {
+        this.ediEliminado = ediEliminado;
     }
 
 }

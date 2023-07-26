@@ -26,6 +26,10 @@ public class Aulas {
     private Long aulId;
     @Column(name = "aul_descripcion")
     private String auldescripcion;
+
+    @Column(name = "aul_eliminado")
+    private boolean aulEliminado;
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "edi_id")
     private Edificio edificio;
@@ -48,10 +52,11 @@ public class Aulas {
         this.auldescripcion = auldescripcion;
         this.edificio = edificio;
     }
-
-    public Aulas(Long aulId, String auldescripcion) {
+    
+    public Aulas(Long aulId, String auldescripcion, boolean aulEliminado) {
         this.aulId = aulId;
         this.auldescripcion = auldescripcion;
+        this.aulEliminado = aulEliminado;
     }
 
     public Long getAulId() {
@@ -70,11 +75,6 @@ public class Aulas {
         this.auldescripcion = auldescripcion;
     }
 
-    @Override
-    public String toString() {
-        return "Aulas [aulId=" + aulId + ", auldescripcion=" + auldescripcion + "]";
-    }
-
     public Edificio getEdificio() {
         return edificio;
     }
@@ -91,4 +91,11 @@ public class Aulas {
         this.horarios = horarios;
     }
 
+    public boolean isAulEliminado() {
+        return aulEliminado;
+    }
+
+    public void setAulEliminado(boolean aulEliminado) {
+        this.aulEliminado = aulEliminado;
+    }
 }

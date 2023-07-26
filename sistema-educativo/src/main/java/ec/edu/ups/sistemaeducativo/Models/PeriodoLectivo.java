@@ -27,13 +27,18 @@ public class PeriodoLectivo {
     @JoinColumn(name = "grp_id")
     private List<GrupoAsignatura> grupoAsignaturas;
 
+    @Column(name = "per_eliminado")
+    private boolean perEliminado;
+
     public PeriodoLectivo() {
     }
 
-    public PeriodoLectivo(Long plId, String plDescripcion, List<GrupoAsignatura> grupoAsignaturas) {
+    public PeriodoLectivo(Long plId, String plDescripcion, List<GrupoAsignatura> grupoAsignaturas,
+            boolean perEliminado) {
         this.plId = plId;
         this.plDescripcion = plDescripcion;
         this.grupoAsignaturas = grupoAsignaturas;
+        this.perEliminado = perEliminado;
     }
 
     public Long getPlId() {
@@ -60,10 +65,17 @@ public class PeriodoLectivo {
         this.grupoAsignaturas = grupoAsignaturas;
     }
 
+      public boolean isPerEliminado() {
+        return perEliminado;
+    }
+
+    public void setPerEliminado(boolean perEliminado) {
+        this.perEliminado = perEliminado;
+    }
+
     @Override
     public String toString() {
         return "PeriodoLectivo [plId=" + plId + ", plDescripcion=" + plDescripcion + ", grupoAsignaturas="
                 + grupoAsignaturas + "]";
     }
-
 }
