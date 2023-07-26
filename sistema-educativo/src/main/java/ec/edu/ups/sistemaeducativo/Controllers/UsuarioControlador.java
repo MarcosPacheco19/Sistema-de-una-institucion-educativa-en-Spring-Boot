@@ -1,5 +1,6 @@
 package ec.edu.ups.sistemaeducativo.Controllers;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,16 @@ public class UsuarioControlador {
     private UsuarioServicio usuarioServicio;
 
     @GetMapping("login")
-    public ResponseEntity<String> login(@RequestParam String usuCorreo, @RequestParam String usuPassword) {
-        Optional<Usuario> optionalUsuario = usuarioServicio.findByUsuCorreoAndUsuPassword(usuCorreo, usuPassword);
-        if (optionalUsuario.isPresent()) {
-            return ResponseEntity.ok(optionalUsuario.get().getUsuPerfilAcceso());
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario y/o contraseña incorrectos.");
-        }
+    public ResponseEntity<Map<String, String>> login(@RequestParam String usuCorreo, @RequestParam String usuPassword) {
+    Optional<Usuario> optionalUsuario = usuarioServicio.findByUsuCorreoAndUsuPassword(usuCorreo, usuPassword);
+    if (optionalUsuario.isPresent()) {
+        Map<String, String> response = new HashMap<>();
+        response.put("perfilAcceso", optionalUsuario.get().getUsuPerfilAcceso());
+        return ResponseEntity.ok(response);
+    } else {
+        Map<String, String> response = new HashMap<>();
+        response.put("perfilAcceso", "Usuario y/o contraseña incorrectos.");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
     }
+}
 }
