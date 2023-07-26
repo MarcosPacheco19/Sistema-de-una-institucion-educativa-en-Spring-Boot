@@ -3,15 +3,16 @@ package ec.edu.ups.sistemaeducativo.Controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.ups.sistemaeducativo.Models.Usuario;
 import ec.edu.ups.sistemaeducativo.Services.UsuarioServicio;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
-@Controller
+@RestController
 @RequestMapping(path = "usuarios")
 public class UsuarioControlador {
 
@@ -19,10 +20,10 @@ public class UsuarioControlador {
     private UsuarioServicio usuarioServicio;
 
     @PostMapping("login")
-    public Usuario login(@RequestBody Usuario usuario){
+    public ResponseEntity<String> login(@RequestBody Usuario usuario){
         Optional<Usuario> optionalUsuario = usuarioServicio.findByUsuCorreoAndUsuPassword(usuario.getUsuCorreo(), usuario.getUsuPassword());
         if(optionalUsuario.isPresent()){
-            return optionalUsuario.get();
+            return ResponseEntity.ok(optionalUsuario.get().getUsuPerfilAcceso());
         } else {
             throw new RuntimeException("Usuario y/o contraseña incorrectos.");
         }
