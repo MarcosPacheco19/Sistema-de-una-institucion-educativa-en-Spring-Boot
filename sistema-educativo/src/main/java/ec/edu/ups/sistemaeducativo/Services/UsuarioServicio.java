@@ -11,25 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsuarioServicio  {
     
- @Autowired
-    private UsuarioRepositorio logeoUsuarioRepository;
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
-    public Usuario findByUsername(String correo) {
-        Optional<Usuario> usuarioOptional = logeoUsuarioRepository.findUsuarioByUsuCorreo(correo);
-        if (usuarioOptional.isPresent()) {
-            return usuarioOptional.get();
-        } else {
-            return null;
-        }
-    }
-
-    public boolean validateUser(Usuario user) {
-        Usuario foundUser = findByUsername(user.getUsuNombre());
-
-        if(foundUser != null) {
-            return foundUser.getUsuPassword().equals(user.getUsuPassword());
-        }
-
-        return false;
+    public Optional<Usuario> findByUsuCorreoAndUsuPassword(String usuCorreo, String usuPassword){
+        return usuarioRepositorio.findByUsuCorreoAndUsuPassword(usuCorreo, usuPassword);
     }
 }
