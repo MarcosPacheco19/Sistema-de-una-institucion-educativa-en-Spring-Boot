@@ -33,18 +33,30 @@ public class Horario {
     @JoinColumn(name = "eul_id")
     private Aulas aulas;
 
+    @Column(name = "eul_eliminado")
+    private boolean eulEliminado;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "grp_id")
     private List<GrupoAsignatura> grupoAsignaturas;
 
     public Horario(Long horId, String horDia, String horHoraEntrada, String horHoraSalida, Aulas aulas,
-            List<GrupoAsignatura> grupoAsignaturas) {
+            boolean eulEliminado, List<GrupoAsignatura> grupoAsignaturas) {
         this.horId = horId;
         this.horDia = horDia;
         this.horHoraEntrada = horHoraEntrada;
         this.horHoraSalida = horHoraSalida;
         this.aulas = aulas;
+        this.eulEliminado = eulEliminado;
         this.grupoAsignaturas = grupoAsignaturas;
+    }
+
+    public boolean isEulEliminado() {
+        return eulEliminado;
+    }
+
+    public void setEulEliminado(boolean eulEliminado) {
+        this.eulEliminado = eulEliminado;
     }
 
     public Horario() {
@@ -97,5 +109,4 @@ public class Horario {
     public void setGrupoAsignaturas(List<GrupoAsignatura> grupoAsignaturas) {
         this.grupoAsignaturas = grupoAsignaturas;
     }
-
 }

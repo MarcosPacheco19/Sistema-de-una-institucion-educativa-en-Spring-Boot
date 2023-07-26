@@ -25,11 +25,9 @@ public class Estudiante extends Usuario {
     }
 
     public Estudiante(Long usuId, String usuNombre, String usuApellido, String usuCorreo, String usuPassword,
-            String usuPerfilAcceso, String usuCedula, Long estId, String estGradoAcademico,
-            List<Matricula> matriculas) {
-        super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula);
+            String usuPerfilAcceso, String usuCedula, boolean usuEliminado, String estGradoAcademico) {
+        super(usuId, usuNombre, usuApellido, usuCorreo, usuPassword, usuPerfilAcceso, usuCedula, usuEliminado);
         this.estGradoAcademico = estGradoAcademico;
-        this.matriculas = matriculas;
     }
 
     public Estudiante(Long usuId) {

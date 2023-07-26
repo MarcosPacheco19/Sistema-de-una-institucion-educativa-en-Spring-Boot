@@ -26,14 +26,19 @@ public class Caja {
     @JoinColumn(name = "cab_id")
     private CabeceraFactura cabeceraFactura;
 
+    @Column(name = "caj_eliminado")
+    private boolean cabEliminado;
+
     public Caja() {
     }
 
-    public Caja(Long cajId, double cajSaldoInicial, String cajFecha, CabeceraFactura cabeceraFactura) {
+    public Caja(Long cajId, double cajSaldoInicial, String cajFecha, CabeceraFactura cabeceraFactura,
+            boolean cabEliminado) {
         this.cajId = cajId;
         this.cajSaldoInicial = cajSaldoInicial;
         this.cajFecha = cajFecha;
         this.cabeceraFactura = cabeceraFactura;
+        this.cabEliminado = cabEliminado;
     }
 
     public Long getCajId() {
@@ -68,4 +73,11 @@ public class Caja {
         this.cabeceraFactura = cabeceraFactura;
     }
 
+    public boolean isCabEliminado() {
+        return cabEliminado;
+    }
+
+    public void setCabEliminado(boolean cabEliminado) {
+        this.cabEliminado = cabEliminado;
+    }
 }
