@@ -12,8 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 
 @Entity
 @Table(name = "Aulas")
@@ -30,7 +30,7 @@ public class Aulas {
     @Column(name = "aul_eliminado")
     private boolean aulEliminado;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "edi_id")
     private Edificio edificio;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -98,4 +98,6 @@ public class Aulas {
     public void setAulEliminado(boolean aulEliminado) {
         this.aulEliminado = aulEliminado;
     }
+
+    
 }

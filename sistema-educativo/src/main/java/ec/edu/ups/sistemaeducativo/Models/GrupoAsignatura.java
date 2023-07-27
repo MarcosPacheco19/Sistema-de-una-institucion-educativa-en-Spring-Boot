@@ -20,6 +20,8 @@ public class GrupoAsignatura {
 
     @Column(name = "grp_eliminado")
     private boolean grpEliminado;
+
+    
     
     public GrupoAsignatura(Long grpId, String grupoAcademino, boolean grpEliminado) {
         this.grpId = grpId;

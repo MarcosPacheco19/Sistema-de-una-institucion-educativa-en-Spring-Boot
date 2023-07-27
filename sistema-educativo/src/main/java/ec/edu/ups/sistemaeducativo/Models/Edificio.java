@@ -2,17 +2,11 @@ package ec.edu.ups.sistemaeducativo.Models;
 
 import jakarta.persistence.Table;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "Edificio")
@@ -25,22 +19,24 @@ public class Edificio {
     @Column(name = "edi_nombre")
     private String ediNombre;
 
+    @Column(name = "edi_numero_aulas")
+    private int ediNumeroAulas;
+
     @Column(name = "edi_eliminado")
     private boolean ediEliminado;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "aul_id")
-    private List<Aulas> aulas;
 
     public Edificio() {
 
     }
 
-    public Edificio(Long ediId, String ediNombre, boolean ediEliminado) {
+    
+    public Edificio(Long ediId, String ediNombre, int ediNumeroAulas, boolean ediEliminado) {
         this.ediId = ediId;
         this.ediNombre = ediNombre;
+        this.ediNumeroAulas = ediNumeroAulas;
         this.ediEliminado = ediEliminado;
     }
+
 
     public Edificio(Long ediId, String ediNombre) {
         this.ediId = ediId;
@@ -68,14 +64,6 @@ public class Edificio {
         return "Edificio [ediId=" + ediId + ", ediNombre=" + ediNombre + "]";
     }
 
-    public List<Aulas> getAulas() {
-        return aulas;
-    }
-
-    public void setAulas(List<Aulas> aulas) {
-        this.aulas = aulas;
-    }
-
     public boolean isEdiEliminado() {
         return ediEliminado;
     }
@@ -83,5 +71,15 @@ public class Edificio {
     public void setEdiEliminado(boolean ediEliminado) {
         this.ediEliminado = ediEliminado;
     }
+
+    public int getEdiNumeroAulas() {
+        return ediNumeroAulas;
+    }
+
+
+    public void setEdiNumeroAulas(int ediNumeroAulas) {
+        this.ediNumeroAulas = ediNumeroAulas;
+    }
+    
 
 }

@@ -30,7 +30,7 @@ public class CalificacionServicio {
     public ResponseEntity<Object> nuevaCalificaciones (Calificacion calificacion) {
 		datos = new HashMap<>();
 
-        Optional<Calificacion> respuesta = calificacionRespositorio.findById(calificacion.getCaliId());
+        Optional<Calificacion> respuesta = calificacionRespositorio.findCalificacionByCaliId(calificacion.getCaliId());
         
         if (respuesta.isPresent()) {
 			datos.put("Error", true);
