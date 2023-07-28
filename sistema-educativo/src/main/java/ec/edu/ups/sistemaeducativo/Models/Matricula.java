@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,57 +15,56 @@ public class Matricula {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mat_id")
-    private long mat_id;
+    @Column(name = "mat_Id")
+    private long matId;
     @Column(name = "mat_tipo")
-    private String mat_tipo;
+    private String matTipo;
     @Column(name = "mat_fecha")
-    private String mat_fecha;
-
+    private String matFecha;
     @Column(name = "mat_eliminado")
     private boolean matEliminado;
 
-    @OneToOne
-    @JoinColumn(name = "est_id")
+    @ManyToOne
+    @JoinColumn(name = "usu_id")
     private Estudiante estudiante;
 
     public Matricula() {
     }
 
-    public Matricula(long mat_id, String mat_tipo, String mat_fecha, boolean matEliminado, Estudiante estudiante) {
-        this.mat_id = mat_id;
-        this.mat_tipo = mat_tipo;
-        this.mat_fecha = mat_fecha;
+    public Matricula(long matId, String matTipo, String matFecha, boolean matEliminado, Estudiante estudiante) {
+        this.matId = matId;
+        this.matTipo = matTipo;
+        this.matFecha = matFecha;
         this.matEliminado = matEliminado;
         this.estudiante = estudiante;
     }
 
-    public Matricula(long mat_id) {
-        this.mat_id = mat_id;
+    public Matricula(long matId) {
+        this.matId = matId;
     }
 
     public long getMat_id() {
-        return mat_id;
+        return matId;
     }
 
-    public void setMat_id(long mat_id) {
-        this.mat_id = mat_id;
+    public void setMat_id(long matId) {
+        this.matId = matId;
     }
 
     public String getMat_tipo() {
-        return mat_tipo;
+        return matTipo;
     }
 
-    public void setMat_tipo(String mat_tipo) {
-        this.mat_tipo = mat_tipo;
+    public void setMat_tipo(String matTipo) {
+        this.matTipo = matTipo;
     }
 
     public String getMat_fecha() {
-        return mat_fecha;
+        return matFecha;
     }
 
-    public void setMat_fecha(String mat_fecha) {
-        this.mat_fecha = mat_fecha;
+    public void setMat_fecha(String matFecha) {
+        this.matFecha = matFecha;
     }
 
     public Estudiante getEstudiante() {
@@ -84,13 +83,15 @@ public class Matricula {
         this.matEliminado = matEliminado;
     }
 
+   
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (int) (mat_id ^ (mat_id >>> 32));
-        result = prime * result + ((mat_tipo == null) ? 0 : mat_tipo.hashCode());
-        result = prime * result + ((mat_fecha == null) ? 0 : mat_fecha.hashCode());
+        result = prime * result + (int) (matId ^ (matId >>> 32));
+        result = prime * result + ((matTipo == null) ? 0 : matTipo.hashCode());
+        result = prime * result + ((matFecha == null) ? 0 : matFecha.hashCode());
         result = prime * result + (matEliminado ? 1231 : 1237);
         result = prime * result + ((estudiante == null) ? 0 : estudiante.hashCode());
         return result;
@@ -105,17 +106,17 @@ public class Matricula {
         if (getClass() != obj.getClass())
             return false;
         Matricula other = (Matricula) obj;
-        if (mat_id != other.mat_id)
+        if (matId != other.matId)
             return false;
-        if (mat_tipo == null) {
-            if (other.mat_tipo != null)
+        if (matTipo == null) {
+            if (other.matTipo != null)
                 return false;
-        } else if (!mat_tipo.equals(other.mat_tipo))
+        } else if (!matTipo.equals(other.matTipo))
             return false;
-        if (mat_fecha == null) {
-            if (other.mat_fecha != null)
+        if (matFecha == null) {
+            if (other.matFecha != null)
                 return false;
-        } else if (!mat_fecha.equals(other.mat_fecha))
+        } else if (!matFecha.equals(other.matFecha))
             return false;
         if (matEliminado != other.matEliminado)
             return false;
@@ -129,7 +130,7 @@ public class Matricula {
 
     @Override
     public String toString() {
-        return "Matricula [mat_id=" + mat_id + ", mat_tipo=" + mat_tipo + ", mat_fecha=" + mat_fecha + ", matEliminado="
+        return "Matricula [matId=" + matId + ", matTipo=" + matTipo + ", matFecha=" + matFecha + ", matEliminado="
                 + matEliminado + ", estudiante=" + estudiante + "]";
     }
 

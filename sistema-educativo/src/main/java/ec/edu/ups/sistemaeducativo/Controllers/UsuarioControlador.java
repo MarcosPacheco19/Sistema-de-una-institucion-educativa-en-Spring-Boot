@@ -1,12 +1,17 @@
 package ec.edu.ups.sistemaeducativo.Controllers;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,16 +27,38 @@ public class UsuarioControlador {
     private UsuarioServicio usuarioServicio;
 
     @GetMapping("login")
-    public ResponseEntity<Map<String, String>> login(@RequestParam String usuCorreo, @RequestParam String usuPassword) {
-    Optional<Usuario> optionalUsuario = usuarioServicio.findByUsuCorreoAndUsuPassword(usuCorreo, usuPassword);
-    if (optionalUsuario.isPresent()) {
-        Map<String, String> response = new HashMap<>();
-        response.put("perfilAcceso", optionalUsuario.get().getUsuPerfilAcceso());
-        return ResponseEntity.ok(response);
-    } else {
-        Map<String, String> response = new HashMap<>();
-        response.put("perfilAcceso", "Usuario y/o contraseña incorrectos.");
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+    public ResponseEntity<Usuario> login(@RequestParam String usuCorreo, @RequestParam String usuPassword) {
+        Optional<Usuario> optionalUsuario = usuarioServicio.findByUsuCorreoAndUsuPassword(usuCorreo, usuPassword);
+        
+        if (optionalUsuario.isPresent()) {
+            return ResponseEntity.ok(optionalUsuario.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
-}
+
+     @GetMapping(path = "listar")
+    public List<Usuario> getUsuarios() {
+        return this.usuarioServicio.getUsuarios();
+    }
+
+    @PostMapping(path = "registrar")
+    public ResponseEntity<Object> registrarUsuario(@RequestBody Usuario Usuario) {
+        return this.usuarioServicio.nuevoUsuario(Usuario);
+    }
+
+    @PatchMapping(path = "actualizar")
+    public ResponseEntity<Object> actualizarUsuario(@RequestBody Usuario Usuario) {
+        return this.usuarioServicio.actualizarUsuario(Usuario);
+    }
+
+    @DeleteMapping(path = "eliminar/{estId}")
+    public ResponseEntity<Object> eliminarUsuario(@PathVariable("usuId") Long id) {
+        return this.usuarioServicio.eliminarUsuario(id);
+    }
+
+    @GetMapping(path = "buscar/{estId}")
+    public ResponseEntity<Object> buscarUsuario(@PathVariable("usuId") Long id) {
+        return this.usuarioServicio.buscarUsuario(id);
+    }
 }
